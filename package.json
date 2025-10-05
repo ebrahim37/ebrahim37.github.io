@@ -1,7 +1,8 @@
 {
 	"scripts": {
 		"dev": "vinxi dev --host --port 3390",
-		"build": "vinxi build && rm -rf .output .vinxi"
+		"build": "vinxi build && rm -rf .output .vinxi",
+		"push": "bun run build && git add -A && git commit -m \"update\" && git push"
 	},
 	"type": "module",
 	"dependencies": {

@@ -33,7 +33,7 @@ export default createHandler(() => (
 					<div id='app'>{children}</div>
 					{scripts}
 					<canvas id='gradient-canvas' />
-					<script src='/gradient.js' />
+					<script defer src='/gradient.js' />
 				</body>
 			</html>
 		)}
