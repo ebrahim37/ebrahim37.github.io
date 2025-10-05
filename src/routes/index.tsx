@@ -4,7 +4,7 @@ import { ThemeChanger } from '~/components/ThemeChanger';
 
 export default () => {
 	return (
-		<div class='min-h-screen flex p-5 justify-center'>
+		<div class='min-h-dvh flex p-5 justify-center'>
 			<div class='glass-card relative opacity-80 my-auto max-w-3xl rounded-3xl p-5 text-black dark:text-white'>
 				<div class='absolute top-2 right-2'>
 					<ThemeChanger />
