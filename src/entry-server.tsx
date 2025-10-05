@@ -3,15 +3,13 @@ import { createHandler, StartServer } from '@solidjs/start/server';
 
 /*
 var startTheme = 'light';
-if (typeof window !== 'undefined') {
-	if (localStorage.getItem('theme')) {
-		startTheme = localStorage.getItem('theme');
-	} else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-		startTheme = 'dark';
-	}
-	if (startTheme === 'dark') {
-		document.documentElement.classList.add('dark');
-	}
+if (localStorage.getItem('theme')) {
+	startTheme = localStorage.getItem('theme');
+} else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+	startTheme = 'dark';
+}
+if (startTheme === 'dark') {
+	document.documentElement.classList.add('dark');
 }
 */
 
@@ -26,7 +24,7 @@ export default createHandler(() => (
 					<meta name='viewport' content='width=device-width, initial-scale=1' />
 					<link rel='icon' href='data:image/png;base64,iVBORw0KGgo=' />
 					<script>
-						var startTheme="light";"undefined"!=typeof window&&(localStorage.getItem("theme")?startTheme=localStorage.getItem("theme"):window.matchMedia("(prefers-color-scheme: dark)").matches&&(startTheme="dark"),"dark"===startTheme&&document.documentElement.classList.add("dark"));
+						var startTheme="light";localStorage.getItem("theme")?startTheme=localStorage.getItem("theme"):window.matchMedia("(prefers-color-scheme: dark)").matches&&(startTheme="dark"),"dark"===startTheme&&document.documentElement.classList.add("dark");
 					</script>
 					{assets}
 				</head>
