@@ -2,8 +2,22 @@ import { defineConfig } from '@solidjs/start/config';
 import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
-	vite: {
-		plugins: [tailwindcss()],
+	vite({ router }) {
+		if (router === 'client') {
+			return {
+				plugins: [tailwindcss()],
+				server: {
+					hmr: {
+						protocol: 'wss',
+						host: 'localhost.ebra.dev',
+						port: 3391,
+					},
+				},
+			};
+		}
+		return {
+			plugins: [tailwindcss()],
+		};
 	},
 	server: {
 		https: {
