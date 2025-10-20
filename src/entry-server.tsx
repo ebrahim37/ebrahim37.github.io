@@ -16,24 +16,24 @@ if (startTheme === 'dark') {
 export default createHandler(() => (
 	<StartServer
 		document={({ assets, children, scripts }) => (
-			<html lang='en' class='overscroll-y-none'>
+			<html lang='en'>
 				<head>
-					<title>ebra.dev</title>
 					<meta charset='utf-8' />
-					<meta name='description' content='Personal website of Ebrahim Haghshenas, Full Stack Developer.' />
 					<meta name='viewport' content='width=device-width, initial-scale=1' />
 					<link rel='icon' href='data:image/png;base64,iVBORw0KGgo=' />
+					<link rel='preconnect' href='https://fonts.googleapis.com' />
+					<link rel='preconnect' href='https://fonts.gstatic.com' crossOrigin='anonymous' />
+					<link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap' />
 					<script>
 						var startTheme="light";localStorage.getItem("theme")?startTheme=localStorage.getItem("theme"):window.matchMedia("(prefers-color-scheme: dark)").matches&&(startTheme="dark"),"dark"===startTheme&&document.documentElement.classList.add("dark");
 					</script>
 					{assets}
 				</head>
-				<body class='relative overscroll-y-none'>
-					<div class='backup-bg' />
-					<div id='app'>{children}</div>
+				<body>
+					<div id='app'>
+						{children}
+					</div>
 					{scripts}
-					<canvas id='gradient-canvas' />
-					<script defer src='/gradient.js' />
 				</body>
 			</html>
 		)}

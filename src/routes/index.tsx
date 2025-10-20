@@ -1,79 +1,58 @@
-import { Social } from '~/components/Social';
-import { Project } from '~/components/Project';
-import { ThemeChanger } from '~/components/ThemeChanger';
+import { For } from 'solid-js';
+
+import { Layout } from '~/components/Layout.tsx';
+import { HomePagePost } from '~/components/HomePagePost.tsx';
+import { Section } from '~/components/Section.tsx';
+import { POSTS } from '~/utils/posts.ts';
 
 export default () => {
 	return (
-		<div class='min-h-dvh flex p-5 justify-center'>
-			<div class='glass-card relative opacity-80 my-auto max-w-3xl rounded-3xl p-5 text-black dark:text-white'>
-				<div class='absolute top-2 right-2'>
-					<ThemeChanger />
+		<Layout>
+			<Section comp='header' cnArg='border-b-[0.5px] flex flex-col'>
+				<div class='relative h-56 w-full shrink-0'>
+					<span class='box-border block overflow-hidden w-[initial] h-[initial] bg-none absolute top-0 left-0 right-0 bottom-0 '>
+						<img
+							alt='A view of downtown Toronto from the CN Tower.'
+							src='/images/CN.avif'
+							class='absolute top-0 left-0 right-0 bottom-0 box-border m-auto block w-0 h-0 min-w-full max-w-full min-h-full max-h-full object-cover'
+						/>
+					</span>
 				</div>
-				<div class='text-3xl font-semibold mb-1 mr-7'>
-					👋 Hi, I'm{' '}
-					<span class='font-bold text-transparent bg-clip-text bg-gradient-to-tr from-[#4b65e8] to-[#ff4ecd]'>
-						Ebrahim
-					</span>!
+				<div class='p-4 md:p-8 gap-4 shrink-0 flex flex-col'>
+					<div class='flex flex-col items-start shrink-0'>
+						<h1 class='text-[1.875rem] text-[#1e293b] dark:text-white tracking-tight leading-[1.5] font-semibold'>
+							Ebrahim Haghshenas
+						</h1>
+						<h2 class='text-[1.5rem] tracking-tight leading-[1.25] font-normal'>
+							Software Engineer
+						</h2>
+					</div>
+					<p class='leading-[1.5] shrink-0'>
+						UI-leaning full-stack dev focused on fast DX and clean UX.
+						Final-year CompSci @ Queen’s.
+						I build with TypeScript, React/Solid, Tailwind, Drizzle, and Bun; ship on Linux.
+						Recently: LLM eval/annotation and full-stack product work.
+					</p>
+					<div class='text-[#475569] dark:text-[#cbd5e1] text-[0.875rem] gap-1 shrink-0 items-center flex'>
+						<span class='mask-[url(/icons/map-pin.svg)] w-3.5 h-3.5 contain-strict inline-block mask-center mask-no-repeat mask-cover bg-current shrink-0' />
+						<span>Toronto, ON</span>
+					</div>
 				</div>
-				<div class='text-sm italic font-light mb-2'>
-					Software Engineer
-				</div>
-				<div class='-mx-2 mb-3 flex gap-3'>
-					<Social href='https://drive.google.com/file/d/1ZqPFToCU4kQDG6dCo4Z0z7QGLY_1xBYG/view'>
-						Résumé
-					</Social>
-					<Social href='https://github.com/beans42'>
-						GitHub
-					</Social>
-					<Social href='https://www.linkedin.com/in/ebrahim-hagh'>
-						LinkedIn
-					</Social>
-					<Social href='mailto:hello@ebra.dev'>
-						Email
-					</Social>
-				</div>
-				<div class='text-lg mb-1'>
-					Some of my projects:
-				</div>
-				<div class='grid grid-cols-1 gap-2 md:grid-cols-2'>
-					<Project
-						name='lumite'
-						link='https://github.com/beans42/lumite'
-						description='Web-based wallet for the Stellar blockchain.'
-						tags={[ 'Next.js', 'React', 'blockchain', 'PWA' ]}
+			</Section>
+			<Section comp='div' cnArg='min-h-full flex flex-col'>
+				<For each={POSTS}>{(post, i) =>
+					<HomePagePost
+						slug={post.slug}
+						title={post.title}
+						subtitle={post.subtitle}
+						tags={post.tags}
+						timestamp={post.timestamp}
+						image={post.image}
+						topBorder={false}
+						bottomBorder={i() === (POSTS.length - 1) ? false: true}
 					/>
-					<Project
-						name='maze-solver'
-						link='/maze-solver'
-						description="Cross-platform maze-solving app using 'Dear ImGui'."
-						tags={[ 'C++', 'ImGui', 'algorithms', 'GLFW' ]}
-					/>
-					<Project
-						name='xplorit'
-						link='https://github.com/beans42/xplorit'
-						description='Fun geocaching-like game designed to promote exploration and exercise.'
-						tags={[ 'Node.js', 'Express.js', 'Socket.IO', 'Ionic' ]}
-					/>
-					<Project
-						name='steganography'
-						link='https://github.com/beans42/steganography'
-						description='Command-line utility for hiding text in images.'
-						tags={[ 'C++', 'cryptography' ]}
-					/>
-					<Project
-						name='spigot-compass'
-						link='https://github.com/beans42/spigot-compass'
-						description="Minecraft spigot plugin for playing 'Speedrunner VS Hunters'."
-						tags={[ 'Java', 'Minecraft', 'Spigot' ]}
-					/>
-					<Project
-						name='vec-calc'
-						link='/vec-calc'
-						description='Calculator for adding/subtracting two euclidean vectors.'
-						tags={[ 'Bootstrap', 'HTML5', 'JavaScript' ]}
-					/>
-				</div>
-			</div>
-		</div>
+				}</For>
+			</Section>
+		</Layout>
 	);
 };

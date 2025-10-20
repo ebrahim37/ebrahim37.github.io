@@ -2,50 +2,20 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-@utility light-bg {
-	background-image: repeating-linear-gradient(157.5deg,#fff 0,#fff 10px,transparent 10px,transparent 11px),repeating-linear-gradient(67.5deg,#fff 0,#fff 10px,transparent 10px,transparent 11px),linear-gradient(90deg,#075014,#075014)
+@theme {
+	--breakpoint-xs: 35rem;
 }
 
-@utility dark-bg {
-	background-image: repeating-linear-gradient(157.5deg,#000 0,#000 10px,transparent 10px,transparent 11px),repeating-linear-gradient(67.5deg,#000 0,#000 10px,transparent 10px,transparent 11px),linear-gradient(90deg,#55aa76,#5578aa,#9755aa,#aa5557,#9aaa55)
+:root {
+	--font-sans: "system-ui","-apple-system","BlinkMacSystemFont","Segoe UI","Roboto","sans-serif";
+	--font-serif: "Lora","Palatino","Times New Roman","Times","serif";
+	--font-mono: "JetBrains Mono","Monaco","Andale Mono","Consolas","Liberation Mono","Courier New","monospace";
 }
 
-@utility shared-bg {
-	position: absolute;
-	left: 0;
-	top: 0;
-	width: 100%;
-	height: 100%;
+html {
+	@apply overscroll-y-none;
 }
 
-.backup-bg {
-	z-index: -20;
-	background-color: transparent;
-	@apply shared-bg light-bg dark:dark-bg;
-}
-
-#gradient-canvas {
-	z-index: -10;
-	--gradient-color-1: #9C6AF9;
-	--gradient-color-2: #F9DA73;
-	--gradient-color-3: #FA8282;
-	--gradient-color-4: #FD4382;
-	@apply shared-bg;
-}
-
-@utility light-card {
-	background: rgba(241, 245, 249, 0.9);
-	border: 2px solid rgba(255, 255, 255, 0.27);
-}
-
-@utility dark-card {
-	background: rgba(41, 37, 36, 0.9);
-	border: 2px solid rgba(0, 0, 0, 0.27);
-}
-
-.glass-card {
-	box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-	backdrop-filter: blur(1.5px);
-	-webkit-backdrop-filter: blur(1.5px);
-	@apply light-card dark:dark-card;
+body {
+	@apply leading-[normal] text-[1rem] font-sans font-light bg-white text-[#475569] dark:bg-black dark:text-[#cbd5e1] selection:bg-[#c7d2fe] dark:selection:bg-[#787f9a] relative overscroll-y-none;
 }

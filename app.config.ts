@@ -1,5 +1,10 @@
 import { defineConfig } from '@solidjs/start/config';
 import tailwindcss from '@tailwindcss/vite';
+// @ts-expect-error
+import { readFileSync } from 'fs';
+
+import type { Post, Tag } from '~/utils/posts.ts';
+const { posts, tags }: { posts: Post[], tags: Tag[] } = JSON.parse(readFileSync('src/posts/posts.json', 'utf8'));
 
 export default defineConfig({
 	vite({ router }) {
@@ -32,7 +37,14 @@ export default defineConfig({
 			gzip: false,
 		},
 		prerender: {
-			routes: ['/'],
+			routes: [
+				'/',
+				'/resume',
+				...posts.map(x => `/posts/${x.slug}`),
+				...tags.map(x => `/tags/${x.slug}`),
+				'/404.html',
+			],
+			crawlLinks: true,
 		},
 	},
 });
