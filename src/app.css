@@ -13,10 +13,10 @@
 }
 
 html {
+	scrollbar-gutter: stable both-edges;
 	@apply overscroll-y-none;
 }
 
 body {
-	scrollbar-gutter: stable both-edges;
 	@apply leading-[normal] text-[1rem] font-sans font-light bg-white text-[#475569] dark:bg-black dark:text-[#cbd5e1] selection:bg-[#c7d2fe] dark:selection:bg-[#787f9a] relative overscroll-y-none;
 }
