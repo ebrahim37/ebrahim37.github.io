@@ -5,7 +5,7 @@
 	"org.matrix.msc4143.rtc_foci":[
 		{
 			"type":"livekit",
-			"livekit_service_url":"https://chat.ebra.dev:8449/livekit/jwt"
+			"livekit_service_url":"https://chat.ebra.dev:8449"
 		}
 	]
 }
