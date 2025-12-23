@@ -14,7 +14,7 @@ const H2: ParentComponent<{ classArg: string }> = props => (
 	<h2 class={props.classArg}>{props.children}</h2>
 );
 
-const EMAIL = 'hello@ebra.dev';
+const EMAIL = 'sayhi@ebra.dev';
 
 export const Header: Component<{
 	isResume: boolean,
