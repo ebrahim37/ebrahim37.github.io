@@ -1,6 +1,6 @@
 {
-  "_Header-DpcRVnFn.js": {
-    "file": "assets/Header-DpcRVnFn.js",
+  "_Header-DgZpXGpW.js": {
+    "file": "assets/Header-DgZpXGpW.js",
     "name": "Header",
     "imports": [
       "_routing-CXHBrNe4.js",
@@ -39,14 +39,14 @@
     "name": "routing"
   },
   "src/routes/[...404].tsx?pick=default&pick=$css": {
-    "file": "assets/_...404_-UhRDfpIC.js",
+    "file": "assets/_...404_-B0n-eynI.js",
     "name": "_...404_",
     "src": "src/routes/[...404].tsx?pick=default&pick=$css",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
       "_routing-CXHBrNe4.js",
-      "_Header-DpcRVnFn.js",
+      "_Header-DgZpXGpW.js",
       "_Layout--iKVUUH3.js"
     ]
   },
@@ -64,7 +64,7 @@
     ]
   },
   "src/routes/posts/[slug].tsx?pick=default&pick=$css": {
-    "file": "assets/_slug_-BYSm9CBa.js",
+    "file": "assets/_slug_-CqHvzQvr.js",
     "name": "_slug_",
     "src": "src/routes/posts/[slug].tsx?pick=default&pick=$css",
     "isEntry": true,
@@ -74,23 +74,23 @@
       "_index-CNI_kGCG.js",
       "_relativeTime-CLMFdVNP.js",
       "_Layout--iKVUUH3.js",
-      "_Header-DpcRVnFn.js"
+      "_Header-DgZpXGpW.js"
     ]
   },
   "src/routes/resume.tsx?pick=default&pick=$css": {
-    "file": "assets/resume-B_rqocrS.js",
+    "file": "assets/resume-BxNH3-jB.js",
     "name": "resume",
     "src": "src/routes/resume.tsx?pick=default&pick=$css",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
       "_routing-CXHBrNe4.js",
-      "_Header-DpcRVnFn.js",
+      "_Header-DgZpXGpW.js",
       "_Layout--iKVUUH3.js"
     ]
   },
   "src/routes/tags/[tag].tsx?pick=default&pick=$css": {
-    "file": "assets/_tag_-CrSDhLSJ.js",
+    "file": "assets/_tag_-US94KiFk.js",
     "name": "_tag_",
     "src": "src/routes/tags/[tag].tsx?pick=default&pick=$css",
     "isEntry": true,
@@ -100,12 +100,12 @@
       "_index-CNI_kGCG.js",
       "_HomePagePost-DrbpNyWs.js",
       "_Layout--iKVUUH3.js",
-      "_Header-DpcRVnFn.js",
+      "_Header-DgZpXGpW.js",
       "_relativeTime-CLMFdVNP.js"
     ]
   },
   "virtual:$vinxi/handler/client": {
-    "file": "assets/client-CmwazxOL.js",
+    "file": "assets/client-Bx_cGSks.js",
     "name": "client",
     "src": "virtual:$vinxi/handler/client",
     "isEntry": true,

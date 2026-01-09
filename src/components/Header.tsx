@@ -44,7 +44,7 @@ export const Header: Component<{
 				{props.isResume && (
 					<>
 						<p class='leading-[1.5] shrink-0'>
-							Pragmatic engineer with a bias for simple, reliable frontends and small, type-safe backends. Final-year Computing (Software Design) at Queen's with strong fundamentals (3.88 GPA) and hands-on industry experience in LLM evaluation and full-stack development. Built products like a real-estate crowdfunding app and a provably-fair casino game.
+							Pragmatic engineer with a bias for simple, reliable frontends and small, type-safe backends. Final-year Computing (Software Design) at Queen's with strong fundamentals (3.80 GPA) and hands-on industry experience in LLM evaluation and full-stack development. Built products like a real-estate crowdfunding app and a provably-fair casino game.
 						</p>
 						<div class='gap-4 flex flex-wrap justify-start text-[#475569] dark:text-[#cbd5e1] shrink-0 text-[0.875rem] items-center '>
 							<div class='gap-1 shrink-0 items-center flex'>
