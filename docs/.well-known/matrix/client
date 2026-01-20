@@ -1,11 +1,11 @@
 {
 	"m.homeserver": {
-		"base_url": "https://chat.ebra.dev:8448"
+		"base_url": "https://chat-api.ebra.dev"
 	},
-	"org.matrix.msc4143.rtc_foci":[
+	"org.matrix.msc4143.rtc_foci": [
 		{
-			"type":"livekit",
-			"livekit_service_url":"https://chat.ebra.dev:8449"
+			"type": "livekit",
+			"livekit_service_url": "https://chat-livekit.ebra.dev"
 		}
 	]
 }
