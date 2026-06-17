@@ -1,4 +1,4 @@
-import { createMemo, type ParentComponent } from 'solid-js';
+import { type ParentComponent, createMemo } from 'solid-js';
 import { usePageContext } from 'vike-solid/usePageContext';
 
 import { cn } from '~/utils/cn';

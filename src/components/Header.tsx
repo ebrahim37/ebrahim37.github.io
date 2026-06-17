@@ -1,7 +1,8 @@
-import { Component, ParentComponent } from 'solid-js';
+import { type ParentComponent, type Component } from 'solid-js';
 import { Dynamic } from 'solid-js/web';
 
 import { Section } from '~/components/Section.tsx';
+import { CoverImage } from '~/components/CoverImage.tsx';
 
 const Div: ParentComponent<{ classArg: string }> = props => (
 	<div class={props.classArg}>{props.children}</div>
@@ -20,24 +21,25 @@ const EMAIL = 'sayhi@ebra.dev';
 export const Header: Component<{
 	isResume: boolean,
 }> = props => {
+	const NameComponent = () => props.isResume ? H1 : Div;
+	const RoleComponent = () => props.isResume ? H2 : Div;
+
 	return (
 		<Section comp='header' cnArg='border-b-[0.5px]'>
 			<div class='p-4 md:p-8 shrink-0 flex flex-col gap-4'>
 				<div class='gap-3 shrink-0 items-center flex'>
 					<div class='relative w-11 h-11 flex items-center justify-center flex-nowrap rounded-full overflow-hidden contain-strict shrink-0'>
-						<span class='box-border block overflow-hidden w-[initial] h-[initial] bg-none absolute inset-0'>
-							<img
-								alt='A picture of me, Ebrahim Haghshenas'
-								src='/images/me.avif'
-								class='absolute inset-0 box-border m-auto block w-0 h-0 min-w-full max-w-full min-h-full max-h-full object-cover'
-							/>
-						</span>
+						<CoverImage
+							alt='A picture of me, Ebrahim Haghshenas'
+							src='/images/me.avif'
+							imgClass='absolute inset-0 box-border m-auto block w-0 h-0 min-w-full max-w-full min-h-full max-h-full object-cover'
+						/>
 					</div>
 					<div>
-						<Dynamic component={props.isResume ? H1 : Div} classArg='text-[1.125rem] text-[#1e293b] dark:text-white tracking-tight leading-[1.5] font-semibold'>
+						<Dynamic component={NameComponent()} classArg='text-[1.125rem] text-[#1e293b] dark:text-white tracking-tight leading-[1.5] font-semibold'>
 							Ebrahim Haghshenas
 						</Dynamic>
-						<Dynamic component={props.isResume ? H2 : Div} classArg='leading-[1.25] font-normal text-[1.125rem] tracking-tight'>
+						<Dynamic component={RoleComponent()} classArg='leading-[1.25] font-normal text-[1.125rem] tracking-tight'>
 							Software Engineer
 						</Dynamic>
 					</div>

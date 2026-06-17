@@ -3,6 +3,7 @@ import { useData } from 'vike-solid/useData';
 import { useConfig } from 'vike-solid/useConfig';
 
 import type { Data } from './+data';
+import { CoverImage } from '~/components/CoverImage.tsx';
 import { Section } from '~/components/Section.tsx';
 import { HomePagePost } from '~/components/HomePagePost.tsx';
 
@@ -17,14 +18,13 @@ export function Page() {
 		<>
 			<Section comp='header' cnArg='border-b-[0.5px] flex flex-col'>
 				<div class='relative h-56 w-full shrink-0'>
-					<span class='box-border block overflow-hidden w-[initial] h-[initial] bg-none absolute top-0 left-0 right-0 bottom-0 '>
-						<img
-							alt='A view of downtown Toronto from the CN Tower.'
-							src='/images/CN.avif'
-							fetchpriority='high'
-							class='absolute top-0 left-0 right-0 bottom-0 box-border m-auto block w-0 h-0 min-w-full max-w-full min-h-full max-h-full object-cover'
-						/>
-					</span>
+					<CoverImage
+						alt='A view of downtown Toronto from the CN Tower.'
+						src='/images/CN.avif'
+						fetchpriority='high'
+						wrapperClass='box-border block overflow-hidden w-[initial] h-[initial] bg-none absolute top-0 left-0 right-0 bottom-0 '
+						imgClass='absolute top-0 left-0 right-0 bottom-0 box-border m-auto block w-0 h-0 min-w-full max-w-full min-h-full max-h-full object-cover'
+					/>
 				</div>
 				<div class='p-4 md:p-8 gap-4 shrink-0 flex flex-col'>
 					<div class='flex flex-col items-start shrink-0'>
@@ -52,7 +52,7 @@ export function Page() {
 					<HomePagePost
 						post={post}
 						topBorder={false}
-						bottomBorder={i() === (data.posts.length - 1) ? false : true}
+						bottomBorder={i() !== data.posts.length - 1}
 					/>
 				}</For>
 			</Section>

@@ -1,8 +1,10 @@
-import { Component, For, createSignal, onMount } from 'solid-js';
+import { type Component, createSignal, onMount } from 'solid-js';
 
 import type { Post } from '~/utils/posts.ts';
 import { getRelativeTime } from '~/utils/relativeTime.ts';
 import { cn } from '~/utils/cn.ts';
+import { CoverImage } from '~/components/CoverImage.tsx';
+import { TagLinks } from '~/components/TagLinks.tsx';
 
 export const HomePagePost: Component<{
 	post: Post,
@@ -25,13 +27,7 @@ export const HomePagePost: Component<{
 					{relativeTime()}
 				</time>
 				<span>—</span>
-				<ul class='gap-2 shrink-0 flex list-none'>
-					<For each={props.post.tags}>{tag =>
-						<li>
-							<a class='text-[#1d4ed8] dark:text-[#60a5fa] font-medium no-underline hover:underline' href={`/tags/${tag.slug}`}>{tag.name}</a>
-						</li>
-					}</For>
-				</ul>
+				<TagLinks tags={props.post.tags} />
 			</div>
 			<a class='gap-4 shrink-0 flex flex-col no-underline text-inherit' href={`/posts/${props.post.slug}`}>
 				<div class='gap-2 shrink-0 flex flex-col'>
@@ -43,13 +39,11 @@ export const HomePagePost: Component<{
 					</p>
 				</div>
 				<div class='relative w-full h-74 shrink-0'>
-					<span class='box-border block overflow-hidden w-[initial] h-[initial] bg-none absolute inset-0'>
-						<img
-							alt='A screenshot of a Neovide window on macOS'
-							src={props.post.image}
-							class='block min-w-full max-w-full min-h-full max-h-full object-cover rounded-2xl'
-						/>
-					</span>
+					<CoverImage
+						alt='A screenshot of a Neovide window on macOS'
+						src={props.post.image}
+						imgClass='block min-w-full max-w-full min-h-full max-h-full object-cover rounded-2xl'
+					/>
 				</div>
 				<div class='font-normal shrink-0'>
 					{props.post.words} words · {props.post.minutes} min read

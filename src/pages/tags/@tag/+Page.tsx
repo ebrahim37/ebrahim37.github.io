@@ -27,8 +27,8 @@ export function Page() {
 				<For each={data.posts}>{(post, i) =>
 					<HomePagePost
 						post={post}
-						topBorder={i() === 0 ? false : true}
-						bottomBorder={i() === (data.posts.length - 1) ? false : true}
+						topBorder={i() !== 0}
+						bottomBorder={i() !== data.posts.length - 1}
 					/>
 				}</For>
 			</Section>

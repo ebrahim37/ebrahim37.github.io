@@ -1,10 +1,11 @@
-import { For, createEffect, createSignal, onMount } from 'solid-js';
+import { createEffect, createSignal, onMount } from 'solid-js';
 import { useData } from 'vike-solid/useData';
 import { useConfig } from 'vike-solid/useConfig';
 
 import type { Data } from './+data';
 import { Header } from '~/components/Header.tsx';
 import { Section } from '~/components/Section.tsx';
+import { TagLinks } from '~/components/TagLinks.tsx';
 import { getRelativeTime } from '~/utils/relativeTime.ts';
 
 export function Page() {
@@ -35,13 +36,7 @@ export function Page() {
 							{data.post.minutes} min read
 						</div>
 						<span>{"\u2014"}</span>
-						<ul class='gap-2 shrink-0 flex list-none'>
-							<For each={data.post.tags}>{tag =>
-								<li>
-									<a class='text-[#1d4ed8] dark:text-[#60a5fa] font-medium no-underline hover:underline' href={`/tags/${tag.slug}`}>{tag.name}</a>
-								</li>
-							}</For>
-						</ul>
+						<TagLinks tags={data.post.tags} />
 					</div>
 					<div class='gap-4 shrink-0 flex flex-col'>
 						<h1 class='text-[1.5rem] font-normal text-[#1e293b] dark:text-white shrink-0'>
