@@ -1,14 +1,18 @@
-import type { Accessor } from 'solid-js';
-import { createSignal, onMount } from 'solid-js';
+import { type Accessor, createSignal, onMount } from 'solid-js';
 
 type ThemeType = 'light' | 'dark';
+
+declare global {
+	interface Window {
+		startTheme?: ThemeType,
+	}
+}
 
 export const useTheme = (): [Accessor<ThemeType>, () => void] => {
 	const [theme, setTheme] = createSignal<ThemeType>('light');
 
 	onMount(() => {
-		// @ts-expect-error
-		setTheme(window.startTheme ?? 'light'); //in script tag from ~/entry-server.tsx
+		setTheme(window.startTheme ?? 'light');
 	});
 
 	const toggleTheme = () => {

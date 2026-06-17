@@ -1,5 +1,6 @@
 import { Component, ParentComponent } from 'solid-js';
 import { Dynamic } from 'solid-js/web';
+
 import { Section } from '~/components/Section.tsx';
 
 const Div: ParentComponent<{ classArg: string }> = props => (
@@ -22,7 +23,7 @@ export const Header: Component<{
 	return (
 		<Section comp='header' cnArg='border-b-[0.5px]'>
 			<div class='p-4 md:p-8 shrink-0 flex flex-col gap-4'>
-				<div class='gap-[0.75rem] shrink-0 items-center flex'>
+				<div class='gap-3 shrink-0 items-center flex'>
 					<div class='relative w-11 h-11 flex items-center justify-center flex-nowrap rounded-full overflow-hidden contain-strict shrink-0'>
 						<span class='box-border block overflow-hidden w-[initial] h-[initial] bg-none absolute inset-0'>
 							<img
@@ -43,7 +44,7 @@ export const Header: Component<{
 				</div>
 				{props.isResume && (
 					<>
-						<p class='leading-[1.5] shrink-0'>
+						<p class='leading-normal shrink-0'>
 							Pragmatic engineer with a bias for simple, reliable frontends and small, type-safe backends. Final-year Computing (Software Design) at Queen's with strong fundamentals (3.80 GPA) and hands-on industry experience in LLM evaluation and full-stack development. Built products like a real-estate crowdfunding app and a provably-fair casino game.
 						</p>
 						<div class='gap-4 flex flex-wrap justify-start text-[#475569] dark:text-[#cbd5e1] shrink-0 text-[0.875rem] items-center '>

@@ -1,30 +1,18 @@
 import { Component, For, createSignal, onMount } from 'solid-js';
-import { A } from '@solidjs/router';
 
-import { cn } from '~/utils/cn.ts';
-import { getReadingTime, TAGS } from '~/utils/posts.ts';
+import type { Post } from '~/utils/posts.ts';
 import { getRelativeTime } from '~/utils/relativeTime.ts';
+import { cn } from '~/utils/cn.ts';
 
 export const HomePagePost: Component<{
-	slug: string,
-	title: string,
-	subtitle: string,
-	tags: string[],
-	timestamp: number,
-	image: string,
+	post: Post,
 	topBorder: boolean,
 	bottomBorder: boolean,
 }> = props => {
 	const [relativeTime, setRelativeTime] = createSignal('0 days ago');
 	onMount(() => {
-		setRelativeTime(getRelativeTime(props.timestamp));
+		setRelativeTime(getRelativeTime(props.post.timestamp));
 	});
-
-	const stats = getReadingTime(props.slug);
-	const tagsArr = props.tags.map(x => ({
-		slug: x,
-		name: TAGS.find(y => y.slug === x)!.name,
-	}));
 
 	return (
 		<article class={cn(
@@ -32,41 +20,41 @@ export const HomePagePost: Component<{
 			props.topBorder && 'border-t-[0.5px]',
 			props.bottomBorder && 'border-b-[0.5px]',
 		)}>
-			<div class='text-[#64748b] dark:text-[#94a3b8] text-[0.75rem] leading-[1.375] tracking-normal font-light gap-2 shrink-0 flex'>
-				<time datetime={(new Date(props.timestamp)).toJSON()}>
+			<div class='text-[#64748b] dark:text-[#94a3b8] text-[0.75rem] leading-snug tracking-normal font-light gap-2 shrink-0 flex'>
+				<time datetime={(new Date(props.post.timestamp)).toJSON()}>
 					{relativeTime()}
 				</time>
 				<span>—</span>
 				<ul class='gap-2 shrink-0 flex list-none'>
-					<For each={tagsArr}>{tag =>
+					<For each={props.post.tags}>{tag =>
 						<li>
-							<A class='text-[#1d4ed8] dark:text-[#60a5fa] font-medium no-underline hover:underline' href={`/tags/${tag.slug}`}>{tag.name}</A>
+							<a class='text-[#1d4ed8] dark:text-[#60a5fa] font-medium no-underline hover:underline' href={`/tags/${tag.slug}`}>{tag.name}</a>
 						</li>
 					}</For>
 				</ul>
 			</div>
-			<A class='gap-4 shrink-0 flex flex-col' href={`/posts/${props.slug}`}>
+			<a class='gap-4 shrink-0 flex flex-col no-underline text-inherit' href={`/posts/${props.post.slug}`}>
 				<div class='gap-2 shrink-0 flex flex-col'>
 					<h3 class='text-[1.25rem] font-normal text-[#1e293b] dark:text-white shrink-0'>
-						{props.title}
+						{props.post.title}
 					</h3>
 					<p class='shrink-0'>
-						{props.subtitle}
+						{props.post.subtitle}
 					</p>
 				</div>
-				<div class='relative w-full h-[296px] shrink-0'>
+				<div class='relative w-full h-74 shrink-0'>
 					<span class='box-border block overflow-hidden w-[initial] h-[initial] bg-none absolute inset-0'>
 						<img
 							alt='A screenshot of a Neovide window on macOS'
-							src={props.image}
-							class='block min-w-full max-w-full min-h-full max-h-full object-cover rounded-[1rem]'
+							src={props.post.image}
+							class='block min-w-full max-w-full min-h-full max-h-full object-cover rounded-2xl'
 						/>
 					</span>
 				</div>
 				<div class='font-normal shrink-0'>
-					{stats.words?.toFixed()} words · {stats.minutes?.toFixed()} min read
+					{props.post.words} words · {props.post.minutes} min read
 				</div>
-			</A>
+			</a>
 		</article>
 	);
 };
