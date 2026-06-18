@@ -1,4 +1,4 @@
-import { For } from 'solid-js';
+import { For, Show } from 'solid-js';
 import { useData } from 'vike-solid/useData';
 import { useConfig } from 'vike-solid/useConfig';
 
@@ -17,17 +17,16 @@ export function Page() {
 	return (
 		<>
 			<Section comp='header' cnArg='border-b-[0.5px] flex flex-col'>
-				<div class='relative h-56 w-full shrink-0'>
+				<div class='relative h-56 w-full'>
 					<CoverImage
 						alt='A view of downtown Toronto from the CN Tower.'
 						src='/images/CN.avif'
 						fetchpriority='high'
-						wrapperClass='box-border block overflow-hidden w-[initial] h-[initial] bg-none absolute top-0 left-0 right-0 bottom-0 '
-						imgClass='absolute top-0 left-0 right-0 bottom-0 box-border m-auto block w-0 h-0 min-w-full max-w-full min-h-full max-h-full object-cover'
+						imgClass='absolute inset-0 m-auto size-0 min-h-full min-w-full max-h-full max-w-full object-cover'
 					/>
 				</div>
-				<div class='p-4 md:p-8 gap-4 shrink-0 flex flex-col'>
-					<div class='flex flex-col items-start shrink-0'>
+				<div class='flex flex-col gap-4 p-4 md:p-8'>
+					<div class='flex flex-col items-start'>
 						<h1 class='text-[1.875rem] text-[#1e293b] dark:text-white tracking-tight leading-normal font-semibold'>
 							Ebrahim Haghshenas
 						</h1>
@@ -35,25 +34,26 @@ export function Page() {
 							Software Engineer
 						</h2>
 					</div>
-					<p class='leading-normal shrink-0'>
+					<p class='leading-normal'>
 						UI-leaning full-stack dev focused on fast DX and clean UX.
 						Final-year CompSci @ Queen&apos;s.
 						I build with TypeScript, React/Solid, Tailwind, Drizzle, and Bun; ship on Linux.
 						Recently: LLM eval/annotation and full-stack product work.
 					</p>
-					<div class='text-[#475569] dark:text-[#cbd5e1] text-[0.875rem] gap-1 shrink-0 items-center flex'>
-						<span class='mask-[url(/icons/map-pin.svg)] w-3.5 h-3.5 contain-strict inline-block mask-center mask-no-repeat mask-cover bg-current shrink-0' />
+					<div class='flex items-center gap-1 text-[0.875rem] text-[#475569] dark:text-[#cbd5e1]'>
+						<span class='size-3.5 shrink-0 bg-current mask-[url(/icons/map-pin.svg)] mask-cover mask-center mask-no-repeat contain-strict' />
 						<span>Toronto, ON</span>
 					</div>
 				</div>
 			</Section>
 			<Section comp='div' cnArg='min-h-full flex flex-col'>
 				<For each={data.posts}>{(post, i) =>
-					<HomePagePost
-						post={post}
-						topBorder={false}
-						bottomBorder={i() !== data.posts.length - 1}
-					/>
+					<>
+						<HomePagePost post={post} />
+						<Show when={i() !== data.posts.length - 1}>
+							<div class='w-full h-px bg-[#e2e8f0] dark:bg-[#334155]' />
+						</Show>
+					</>
 				}</For>
 			</Section>
 		</>

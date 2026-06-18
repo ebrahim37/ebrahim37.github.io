@@ -5,9 +5,8 @@ export const CoverImage: Component<{
 	src: string,
 	imgClass: string,
 	fetchpriority?: 'high' | 'low' | 'auto',
-	wrapperClass?: string,
 }> = props => (
-	<span class={props.wrapperClass ?? 'box-border block overflow-hidden w-[initial] h-[initial] bg-none absolute inset-0'}>
+	<span class='absolute inset-0 block overflow-hidden'>
 		<img
 			alt={props.alt}
 			src={props.src}

@@ -15,7 +15,10 @@ export type Post = {
 	subtitle: string,
 	timestamp: number,
 	tags: Tag[],
-	image: string,
+	image?: {
+		alt: string,
+		src: string,
+	},
 	words: number,
 	minutes: number,
 	content: string,
@@ -34,7 +37,10 @@ export const getPost = (slug: string): Post => {
 		subtitle: data.subtitle,
 		timestamp: data.timestamp,
 		tags: data.tags.map((x: string[]) => ({ slug: x[0], name: x[1] })),
-		image: data.image,
+		image: data.imageSrc ? {
+			alt: data.imageAlt,
+			src: data.imageSrc,
+		} : undefined,
 		words: readingStats.words,
 		minutes: +readingStats.minutes.toFixed(),
 		content,

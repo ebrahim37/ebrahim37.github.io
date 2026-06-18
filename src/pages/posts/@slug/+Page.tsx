@@ -1,4 +1,4 @@
-import { createEffect, createSignal, onMount } from 'solid-js';
+import { createSignal, onMount } from 'solid-js';
 import { useData } from 'vike-solid/useData';
 import { useConfig } from 'vike-solid/useConfig';
 
@@ -10,14 +10,11 @@ import { getRelativeTime } from '~/utils/relativeTime.ts';
 
 export function Page() {
 	const data = useData<Data>();
-	const config = useConfig();
-	const [relativeTime, setRelativeTime] = createSignal('0 days ago');
-	createEffect(() => {
-		config({
-			title: `${data.post.title} / Ebrahim Haghshenas`,
-			description: data.post.subtitle,
-		});
+	const config = useConfig()({
+		title: `${data.post.title} / Ebrahim Haghshenas`,
+		description: data.post.subtitle,
 	});
+	const [relativeTime, setRelativeTime] = createSignal('0 days ago');
 	onMount(() => {
 		setRelativeTime(getRelativeTime(data.post.timestamp));
 	});
@@ -26,8 +23,8 @@ export function Page() {
 		<>
 			<Header isResume={false} />
 			<Section comp='article' cnArg='min-h-full flex flex-col gap-4'>
-				<div class='pt-4 px-4 md:pt-8 md:px-8 gap-4 shrink-0 flex flex-col'>
-					<div class='text-[#64748b] dark:text-[#94a3b8] text-[0.75rem] leading-snug tracking-normal font-light gap-2 shrink-0 flex flex-wrap justify-start'>
+				<div class='flex flex-col gap-4 px-4 pt-4 md:px-8 md:pt-8'>
+					<div class='flex flex-wrap gap-2 text-[0.75rem] leading-snug font-light text-[#64748b] dark:text-[#94a3b8]'>
 						<div>
 							<time datetime={(new Date(data.post.timestamp)).toJSON()}>
 								{relativeTime()}
@@ -35,22 +32,23 @@ export function Page() {
 							<span> · </span>
 							{data.post.minutes} min read
 						</div>
-						<span>{"\u2014"}</span>
+						<span>—</span>
 						<TagLinks tags={data.post.tags} />
 					</div>
-					<div class='gap-4 shrink-0 flex flex-col'>
-						<h1 class='text-[1.5rem] font-normal text-[#1e293b] dark:text-white shrink-0'>
+					<div class='flex flex-col gap-4'>
+						<h1 class='text-[1.5rem] font-normal text-[#1e293b] dark:text-white'>
 							{data.post.title}
 						</h1>
-						<h2 class='leading-5.5 font-light text-[1.125rem] text-[#1e293b] dark:text-white shrink-0'>
+						<h2 class='text-[1.125rem] leading-[1.375] font-light text-[#1e293b] dark:text-white'>
 							{data.post.subtitle}
 						</h2>
 					</div>
 				</div>
-				<div class='px-4 pb-4 md:px-8 md:pb-8 gap-4 md:gap-8 shrink-0 flex flex-col'>
-					<div class='max-w-[80ch] text-left leading-[1.75] shrink-0'>
-						<div innerHTML={data.html} />
-					</div>
+				<div class='flex flex-col gap-4 px-4 pb-4 md:gap-8 md:px-8 md:pb-8'>
+					<div
+						class='markdown-article max-w-[80ch] text-left leading-[1.75]'
+						innerHTML={data.html}
+					/>
 				</div>
 			</Section>
 		</>

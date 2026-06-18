@@ -63,9 +63,8 @@ const List: Component<{
 }> = props => {
 	return (
 		<li class={cn(
-			'p-4 xs:py-4 xs:px-8 rounded-2xl bg-[#f1f5f9] dark:bg-[#0f172a] shrink-0',
-			'grid grid-cols-1 xs:grid-cols-[120px_auto] gap-2 items-center',
-			'text-[#64748b] dark:text-[#94a3b8] leading-normal',
+			'grid grid-cols-1 items-center gap-2 rounded-2xl bg-[#f1f5f9] p-4 leading-normal text-[#64748b]',
+			'xs:grid-cols-[120px_auto] xs:px-8 xs:py-4 dark:bg-[#0f172a] dark:text-[#94a3b8]',
 		)}>
 			<h3 class='text-[#1e293b] dark:text-white font-medium text-[1rem]'>
 				{props.label}
@@ -91,20 +90,18 @@ const Project: Component<{
 		<a
 			href={props.href}
 			class={cn(
-				'p-4 xs:p-8 rounded-2xl',
-				'flex flex-col gap-2',
-				'leading-normal text-[#64748b] dark:text-[#94a3b8]',
-				'border-[0.5px] border-[#1d4ed8] dark:border-[#60a5fa]',
-				'hover:bg-[#f1f5f9] hover:dark:bg-[#0f172a]',
+				'flex flex-col gap-2 rounded-2xl border border-[#1d4ed8] p-4 h-full',
+				'leading-normal text-[#64748b] xs:p-8 dark:border-[#60a5fa] dark:text-[#94a3b8]',
+				'hover:bg-[#f1f5f9] dark:hover:bg-[#0f172a]',
 			)}
 		>
-			<h3 class='font-medium text-[1.125rem] text-[#1e293b] dark:text-white shrink-0'>
+			<h3 class='text-[1.125rem] font-medium text-[#1e293b] dark:text-white'>
 				{props.name}
 			</h3>
-			<p class='shrink-0 text-[0.875rem]'>
+			<p class='text-[0.875rem]'>
 				{props.description}
 			</p>
-			<span class='text-[0.75rem] text-[#1d4ed8] dark:text-[#60a5fa] shrink-0'>
+			<span class='text-[0.75rem] text-[#1d4ed8] dark:text-[#60a5fa]'>
 				{props.tags}
 			</span>
 		</a>
@@ -121,20 +118,19 @@ export function Page() {
 		<>
 			<Header isResume />
 			<Section comp='div' cnArg='p-4 md:p-8 min-h-full flex flex-col gap-8'>
-				<section class='gap-4 shrink-0 flex flex-col'>
-					<h2 class='text-[1.25rem] font-normal text-[#1e293b] dark:text-white shrink-0'>
+				<section class='flex flex-col gap-4'>
+					<h2 class='text-[1.25rem] font-normal text-[#1e293b] dark:text-white'>
 						More about me
 					</h2>
-					<ul class='gap-2 shrink-0 flex flex-col list-none'>
+					<ul class='flex flex-col gap-2 list-none'>
 						<List label='Languages' list={LANGUAGES} />
 						<List label='Libraries' list={LIBRARIES} />
 						<a
 							href={RESUME_LINK}
 							class={cn(
-								'p-4 xs:py-4 xs:px-8 rounded-2xl',
-								'flex items-center justify-center',
-								'font-medium text-[1rem] leading-normal text-[#1e293b] dark:text-white',
-								'border-[0.5px] border-[#1d4ed8] dark:border-[#60a5fa]',
+								'flex items-center justify-center rounded-2xl border-[0.5px] border-[#1d4ed8] p-4',
+								'text-[1rem] leading-normal font-medium text-[#1e293b] xs:px-8 xs:py-4',
+								'dark:border-[#60a5fa] dark:text-white',
 								'hover:bg-[#f1f5f9] dark:hover:bg-[#0f172a]',
 							)}
 						>
@@ -142,11 +138,11 @@ export function Page() {
 						</a>
 					</ul>
 				</section>
-				<section class='gap-4 shrink-0 flex flex-col'>
-					<h2 class='text-[1.25rem] font-normal text-[#1e293b] dark:text-white shrink-0'>
+				<section class='flex flex-col gap-4'>
+					<h2 class='text-[1.25rem] font-normal text-[#1e293b] dark:text-white'>
 						Personal projects
 					</h2>
-					<ul class='grid grid-cols-2 gap-2 items-stretch shrink-0'>
+					<ul class='grid grid-cols-2 gap-2'>
 						<For each={PROJECTS}>{project =>
 							<li>
 								<Project

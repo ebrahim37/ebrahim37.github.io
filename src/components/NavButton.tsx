@@ -8,7 +8,7 @@ const outerClass = cn(
 	'active:bg-[#94a3b8] active:text-[#0f172a] dark:active:bg-[#0f172a] dark:active:text-[#f1f5f9]',
 );
 
-const innerClass = 'w-4 h-4 contain-strict inline-block mask-center mask-no-repeat mask-cover bg-current';
+const innerClass = 'size-4 bg-current mask-cover mask-center mask-no-repeat contain-strict';
 
 export const NavButton: Component<{
 	cnArg: string,
