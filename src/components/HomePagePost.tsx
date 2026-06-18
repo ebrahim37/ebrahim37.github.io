@@ -1,15 +1,12 @@
-import { type Component, createSignal, onMount } from 'solid-js';
+import type { Component } from 'solid-js';
 
 import type { Post } from '~/utils/posts.ts';
-import { getRelativeTime } from '~/utils/relativeTime.ts';
-import { CoverImage } from '~/components/CoverImage.tsx';
+import { createRelativeTime } from '~/utils/relativeTime.ts';
 import { TagLinks } from '~/components/TagLinks.tsx';
+import { CoverImage } from '~/components/CoverImage.tsx';
 
 export const HomePagePost: Component<{ post: Post }> = props => {
-	const [relativeTime, setRelativeTime] = createSignal('? days ago');
-	onMount(() => {
-		setRelativeTime(getRelativeTime(props.post.timestamp));
-	});
+	const relativeTime = createRelativeTime(props.post.timestamp);
 
 	return (
 		<article class='flex flex-col gap-4 p-4 md:p-8'>

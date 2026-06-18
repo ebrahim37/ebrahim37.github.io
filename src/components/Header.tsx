@@ -1,4 +1,4 @@
-import { type ParentComponent, type Component } from 'solid-js';
+import type { ParentComponent, Component } from 'solid-js';
 import { Dynamic } from 'solid-js/web';
 
 import { Section } from '~/components/Section.tsx';

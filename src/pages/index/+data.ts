@@ -1,6 +1,6 @@
 import type { PageContextServer } from 'vike/types';
 
-import { getPosts, type Post } from '~/utils/posts.ts';
+import { type Post, getPosts } from '~/utils/posts.ts';
 
 export type Data = {
 	posts: Post[],

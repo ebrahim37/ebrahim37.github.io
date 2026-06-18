@@ -2,7 +2,7 @@ import type { PageContextServer } from 'vike/types';
 import { createMarkdownExit } from 'markdown-exit';
 import Shiki from '@shikijs/markdown-exit';
 
-import { getPost, type Post } from '~/utils/posts.ts';
+import { type Post, getPost } from '~/utils/posts.ts';
 
 const md = createMarkdownExit({
 	html: true,

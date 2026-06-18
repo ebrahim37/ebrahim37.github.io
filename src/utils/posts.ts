@@ -42,7 +42,7 @@ export const getPost = (slug: string): Post => {
 			src: data.imageSrc,
 		} : undefined,
 		words: readingStats.words,
-		minutes: +readingStats.minutes.toFixed(),
+		minutes: Math.round(readingStats.minutes),
 		content,
 	};
 };

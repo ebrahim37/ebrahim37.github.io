@@ -90,7 +90,7 @@ const Project: Component<{
 			<p class='text-[0.875rem]'>
 				{props.description}
 			</p>
-			<span class='text-[0.75rem] text-[#1d4ed8] dark:text-[#60a5fa]'>
+			<span class='mt-auto text-[0.75rem] text-[#1d4ed8] dark:text-[#60a5fa]'>
 				{props.tags}
 			</span>
 		</a>

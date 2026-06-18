@@ -1,9 +1,8 @@
-import { createSignal, onMount } from 'solid-js';
 import { useData } from 'vike-solid/useData';
 import { useConfig } from 'vike-solid/useConfig';
 
 import type { Data } from './+data.ts';
-import { getRelativeTime } from '~/utils/relativeTime.ts';
+import { createRelativeTime } from '~/utils/relativeTime.ts';
 import { Header } from '~/components/Header.tsx';
 import { Section } from '~/components/Section.tsx';
 import { TagLinks } from '~/components/TagLinks.tsx';
@@ -14,10 +13,7 @@ export function Page() {
 		title: `${data.post.title} / Ebrahim Haghshenas`,
 		description: data.post.subtitle,
 	});
-	const [relativeTime, setRelativeTime] = createSignal('0 days ago');
-	onMount(() => {
-		setRelativeTime(getRelativeTime(data.post.timestamp));
-	});
+	const relativeTime = createRelativeTime(data.post.timestamp);
 
 	return (
 		<>

@@ -1,3 +1,5 @@
+import { createSignal, onMount } from 'solid-js';
+
 // https://stackoverflow.com/a/53800501
 const units: { unit: Intl.RelativeTimeFormatUnit, scale: number }[] = [
 	{ unit: 'year',   scale:  365     * 24 * 60 * 60 * 1000 },
@@ -10,11 +12,20 @@ const units: { unit: Intl.RelativeTimeFormatUnit, scale: number }[] = [
 
 const rtf = new Intl.RelativeTimeFormat('en', { numeric: 'auto' });
 
-export const getRelativeTime = (d1: number, d2 = new Date()): string => {
-	const elapsed = d1 - (+d2);
+export const createRelativeTime = (timestamp: number) => {
+	const [relativeTime, setRelativeTime] = createSignal('? days ago');
 
-	for (const {unit, scale} of units)
-		if (Math.abs(elapsed) > scale || unit === 'second')
-			return rtf.format(Math.round(elapsed/scale), unit);
-	return '? days ago';
+	onMount(() => {
+		const elapsed = timestamp - Date.now();
+		let out = '? days ago';
+		for (const { unit, scale } of units) {
+			if (Math.abs(elapsed) >= scale || unit === 'second') {
+				out = rtf.format(Math.round(elapsed / scale), unit);
+				break;
+			}
+		}
+		setRelativeTime(out);
+	});
+
+	return relativeTime;
 };
