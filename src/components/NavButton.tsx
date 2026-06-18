@@ -1,12 +1,8 @@
 import type { Component } from 'solid-js';
 
-import { cn } from '~/utils/cn';
+import { cn } from '~/utils/cn.ts';
 
-const outerClass = cn(
-	'text-[1rem] p-1 text-inherit cursor-default inline-flex items-center justify-center rounded-full shrink-0',
-	'hover:bg-[#cbd5e1] hover:text-[#0f172a] dark:hover:bg-[#1e293b] dark:hover:text-[#e2e8f0]',
-	'active:bg-[#94a3b8] active:text-[#0f172a] dark:active:bg-[#0f172a] dark:active:text-[#f1f5f9]',
-);
+const outerClass = 'inline-flex shrink-0 items-center justify-center rounded-full p-1 text-[1rem] text-inherit cursor-default hover:text-[#0f172a] hover:bg-[#cbd5e1] dark:hover:text-[#e2e8f0] dark:hover:bg-[#1e293b] active:text-[#0f172a] active:bg-[#94a3b8] dark:active:text-[#f1f5f9] dark:active:bg-[#0f172a]';
 
 const innerClass = 'size-4 bg-current mask-cover mask-center mask-no-repeat contain-strict';
 

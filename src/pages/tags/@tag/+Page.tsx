@@ -2,7 +2,7 @@ import { For, Show } from 'solid-js';
 import { useData } from 'vike-solid/useData';
 import { useConfig } from 'vike-solid/useConfig';
 
-import type { Data } from './+data';
+import type { Data } from './+data.ts';
 import { Header } from '~/components/Header.tsx';
 import { Section } from '~/components/Section.tsx';
 import { HomePagePost } from '~/components/HomePagePost.tsx';

@@ -1,7 +1,6 @@
 import { type Component, For } from 'solid-js';
 import { useConfig } from 'vike-solid/useConfig';
 
-import { cn } from '~/utils/cn';
 import { Header } from '~/components/Header.tsx';
 import { Section } from '~/components/Section.tsx';
 
@@ -62,10 +61,7 @@ const List: Component<{
 	label: string,
 }> = props => {
 	return (
-		<li class={cn(
-			'grid grid-cols-1 items-center gap-2 rounded-2xl bg-[#f1f5f9] p-4 leading-normal text-[#64748b]',
-			'xs:grid-cols-[120px_auto] xs:px-8 xs:py-4 dark:bg-[#0f172a] dark:text-[#94a3b8]',
-		)}>
+		<li class='grid grid-cols-1 xs:grid-cols-[120px_auto] leading-normal items-center gap-2 rounded-2xl p-4 xs:px-8 xs:py-4 text-[#64748b] bg-[#f1f5f9] dark:text-[#94a3b8] dark:bg-[#0f172a]'>
 			<h3 class='text-[#1e293b] dark:text-white font-medium text-[1rem]'>
 				{props.label}
 			</h3>
@@ -87,14 +83,7 @@ const Project: Component<{
 	href: string,
 }> = props => {
 	return (
-		<a
-			href={props.href}
-			class={cn(
-				'flex flex-col gap-2 rounded-2xl border border-[#1d4ed8] p-4 h-full',
-				'leading-normal text-[#64748b] xs:p-8 dark:border-[#60a5fa] dark:text-[#94a3b8]',
-				'hover:bg-[#f1f5f9] dark:hover:bg-[#0f172a]',
-			)}
-		>
+		<a href={props.href} class='h-full flex flex-col leading-normal gap-2 rounded-2xl p-4 xs:p-8 border text-[#64748b] border-[#1d4ed8] hover:bg-[#f1f5f9] dark:text-[#94a3b8] dark:border-[#60a5fa] dark:hover:bg-[#0f172a]'>
 			<h3 class='text-[1.125rem] font-medium text-[#1e293b] dark:text-white'>
 				{props.name}
 			</h3>
@@ -125,15 +114,7 @@ export function Page() {
 					<ul class='flex flex-col gap-2 list-none'>
 						<List label='Languages' list={LANGUAGES} />
 						<List label='Libraries' list={LIBRARIES} />
-						<a
-							href={RESUME_LINK}
-							class={cn(
-								'flex items-center justify-center rounded-2xl border-[0.5px] border-[#1d4ed8] p-4',
-								'text-[1rem] leading-normal font-medium text-[#1e293b] xs:px-8 xs:py-4',
-								'dark:border-[#60a5fa] dark:text-white',
-								'hover:bg-[#f1f5f9] dark:hover:bg-[#0f172a]',
-							)}
-						>
+						<a href={RESUME_LINK} class='flex items-center justify-center leading-normal rounded-2xl p-4 xs:px-8 xs:py-4 text-[1rem] font-medium border-[0.5px] text-[#1e293b] border-[#1d4ed8] hover:bg-[#f1f5f9] dark:text-white dark:border-[#60a5fa] dark:hover:bg-[#0f172a]'>
 							See full resume (PDF)
 						</a>
 					</ul>
