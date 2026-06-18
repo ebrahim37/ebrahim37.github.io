@@ -8,11 +8,11 @@ import { Section } from '~/components/Section.tsx';
 import { HomePagePost } from '~/components/HomePagePost.tsx';
 
 export function Page() {
-	const data = useData<Data>();
 	useConfig()({
 		title: 'Ebrahim Haghshenas / Software Engineer / Toronto',
 		description: 'Personal website of Ebrahim Haghshenas.',
 	});
+	const data = useData<Data>();
 
 	return (
 		<>

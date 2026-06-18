@@ -3,14 +3,14 @@ import { useData } from 'vike-solid/useData';
 import { useConfig } from 'vike-solid/useConfig';
 
 import type { Data } from './+data';
+import { getRelativeTime } from '~/utils/relativeTime.ts';
 import { Header } from '~/components/Header.tsx';
 import { Section } from '~/components/Section.tsx';
 import { TagLinks } from '~/components/TagLinks.tsx';
-import { getRelativeTime } from '~/utils/relativeTime.ts';
 
 export function Page() {
 	const data = useData<Data>();
-	const config = useConfig()({
+	useConfig()({
 		title: `${data.post.title} / Ebrahim Haghshenas`,
 		description: data.post.subtitle,
 	});

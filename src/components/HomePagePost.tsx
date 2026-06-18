@@ -39,7 +39,7 @@ export const HomePagePost: Component<{ post: Post }> = props => {
 					</div>
 				}
 				<div class='font-normal'>
-					Hear me out · {props.post.minutes} min read
+					{props.post.words} words · {props.post.minutes} min read
 				</div>
 			</a>
 		</article>

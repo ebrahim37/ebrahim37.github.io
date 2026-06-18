@@ -9,7 +9,7 @@ import { HomePagePost } from '~/components/HomePagePost.tsx';
 
 export function Page() {
 	const data = useData<Data>();
-	const config = useConfig()({
+	useConfig()({
 		title: `${data.tag.name} articles / Ebrahim Haghshenas`,
 		description: `Dive into my "${data.tag.name}" articles.`,
 	});
