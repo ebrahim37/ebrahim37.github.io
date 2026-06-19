@@ -76,7 +76,7 @@ property keys and mutable strings willy-nilly.
 - A few built-in plugin utilities
 - What `enter()` and `exit()` visitors look like
 
-```ts
+```ts title="src/utils.ts"
 import * as t from "@babel/types";
 import * as babel from "@babel/core";
 
