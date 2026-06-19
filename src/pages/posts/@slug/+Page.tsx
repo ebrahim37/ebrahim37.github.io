@@ -15,10 +15,26 @@ export function Page() {
 	});
 	const relativeTime = createRelativeTime(data.post.timestamp);
 
+	const handleCodeCopy = async (event: MouseEvent) => {
+		const button = (event.target as Element).closest<HTMLButtonElement>('[data-copy-code]');
+		if (!button)
+			return;
+
+		const code = button.closest('.code-block')?.querySelector('code')?.textContent;
+		if (code == null)
+			return;
+
+		await navigator.clipboard.writeText(code);
+		button.textContent = 'Copied!';
+		setTimeout(() => {
+			button.textContent = 'Copy';
+		}, 1500);
+	};
+
 	return (
 		<>
 			<Header isResume={false} />
-			<Section comp='article' cnArg='min-h-full flex flex-col gap-4'>
+			<Section comp='article' cnArg='min-h-full min-w-0 flex flex-col gap-4'>
 				<div class='flex flex-col gap-4 px-4 pt-4 md:px-8 md:pt-8'>
 					<div class='flex flex-wrap gap-2 text-[0.75rem] leading-snug font-light text-[#64748b] dark:text-[#94a3b8]'>
 						<div>
@@ -40,9 +56,10 @@ export function Page() {
 						</h2>
 					</div>
 				</div>
-				<div class='flex flex-col gap-4 px-4 pb-4 md:gap-8 md:px-8 md:pb-8'>
+				<div class='flex min-w-0 flex-col gap-4 px-4 pb-4 md:gap-8 md:px-8 md:pb-8'>
 					<div
-						class='markdown-article max-w-[80ch] text-left leading-[1.75]'
+						class='markdown-article w-full max-w-[80ch] text-left leading-[1.75]'
+						onClick={handleCodeCopy}
 						innerHTML={data.html}
 					/>
 				</div>

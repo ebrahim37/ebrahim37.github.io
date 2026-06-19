@@ -1,38 +1,82 @@
 import type { PageContextServer } from 'vike/types';
 import { createMarkdownExit } from 'markdown-exit';
+import anchor from 'markdown-it-anchor';
 import Shiki from '@shikijs/markdown-exit';
 
 import { type Post, getPost } from '~/utils/posts.ts';
 
+// enable html so we can insert pictures in the md like:
+// <figure>
+// 	<img
+// 		src="/images/nvim-thumbnail.avif"
+// 		alt='A screenshot of a Neovide window on macOS'
+// 	>
+// 	<figcaption>
+// 		Neovim 0.12
+// 		<a href="https://github.com/neovim/neovim/releases/tag/v0.12.0">See release</a>
+// 	</figcaption>
+// </figure>
 const md = createMarkdownExit({
 	html: true,
 });
 
 md.use(Shiki({
 	theme: 'vitesse-dark',
+	// pass title="..." from code block to transformer
+	parseMetaString(meta) {
+		const match = meta.match(/\btitle=(?:"([^"]*)"|'([^']*)')/);
+		return { title: match?.[1] ?? match?.[2] };
+	},
+	transformers: [{
+		root(node) {
+			const pre = node.children.find(child => child.type === 'element' && child.tagName === 'pre');
+			if (!pre || pre.type !== 'element')
+				return;
+
+			const title = this.options.meta?.title;
+
+			node.children = [{
+				type: 'element',
+				tagName: 'figure',
+				properties: {
+					class: 'code-block',
+					...(pre.properties.style ? { style: pre.properties.style } : {}),
+				},
+				children: [
+					...(title ? [{
+						type: 'element' as const,
+						tagName: 'figcaption',
+						properties: { class: 'code-block-title' },
+						children: [{ type: 'text' as const, value: title }],
+					}] : []),
+					{
+						type: 'element',
+						tagName: 'button',
+						properties: {
+							type: 'button',
+							class: 'code-copy-button',
+							dataCopyCode: '',
+							ariaLabel: 'Copy code to clipboard',
+						},
+						children: [{ type: 'text', value: 'Copy' }],
+					},
+					pre,
+				],
+			}];
+		},
+	}],
 }));
 
-const slugifyHeading = (value: string): string => value
-	.normalize('NFKD')
-	.replace(/[\u0300-\u036f]/g, '')
-	.toLowerCase()
-	.replace(/[^a-z0-9]+/g, '-')
-	.replace(/^-|-$/g, '') || 'section';
-
-md.renderer.rules.heading_open = (tokens, index, options, env, renderer) => {
-	const token = tokens[index];
-	if (token.tag !== 'h2' && token.tag !== 'h3')
-		return renderer.renderToken(tokens, index, options, env);
-
-	const heading = renderer.renderInlineAsText(tokens[index + 1].children ?? [], options, env);
-	const slug = slugifyHeading(heading);
-	const occurrence = (env.headingSlugs?.get(slug) ?? 0) + 1;
-	(env.headingSlugs ??= new Map()).set(slug, occurrence);
-	const id = occurrence === 1 ? slug : `${slug}-${occurrence}`;
-	token.attrSet('id', id);
-
-	return `${renderer.renderToken(tokens, index, options, env)}<a class="anchor" href="#${id}" aria-hidden="true"><span class="anchor-icon" aria-hidden="true"></span></a>`;
-};
+md.use(anchor as any, {
+	level: [2, 3],
+	permalink: anchor.permalink.linkInsideHeader({
+		class: 'anchor',
+		symbol: '<span class="anchor-icon" aria-hidden="true"></span>',
+		placement: 'before',
+		space: false,
+		ariaHidden: true,
+	}),
+});
 
 export type Data = {
 	post: Post,
@@ -40,7 +84,7 @@ export type Data = {
 };
 
 export async function data(pageContext: PageContextServer): Promise<Data> {
-	const post = getPost(pageContext.routeParams.slug);
+	const post = getPost(pageContext.routeParams.slug!);
 
 	return {
 		post,

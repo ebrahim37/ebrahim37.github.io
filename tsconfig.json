@@ -1,19 +1,26 @@
 {
 	"compilerOptions": {
+		"lib": ["ESNext", "DOM", "DOM.Iterable"],
 		"target": "ESNext",
 		"module": "ESNext",
-		"moduleResolution": "bundler",
-		"lib": ["ESNext", "DOM", "DOM.Iterable"],
-		"allowImportingTsExtensions": true,
-		"isolatedModules": true,
-
+		"moduleDetection": "force",
 		"jsx": "preserve",
 		"jsxImportSource": "solid-js",
-
 		"types": ["bun", "vite/client"],
+
+		"moduleResolution": "bundler",
+		"isolatedModules": true,
+		"allowImportingTsExtensions": true,
+		"verbatimModuleSyntax": true,
 		"noEmit": true,
-		"skipLibCheck": true,
+
 		"strict": true,
+		"skipLibCheck": true,
+		"noFallthroughCasesInSwitch": true,
+		"noUncheckedIndexedAccess": true,
+		"noImplicitOverride": true,
+		
+		"noUnusedLocals": true,
 
 		"paths": {
 			"~/*": ["./src/*"]
