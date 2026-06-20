@@ -1,0 +1,16 @@
+{
+	"$schema": "./node_modules/oxfmt/configuration_schema.json",
+	"useTabs": true,
+	"tabWidth": 4,
+	"printWidth": 100,
+	"endOfLine": "lf",
+	"semi": true,
+	"singleQuote": true,
+	"jsxSingleQuote": true,
+	"trailingComma": "all",
+	"proseWrap": "always",
+	"embeddedLanguageFormatting": "auto",
+	"sortImports": true,
+	"sortTailwindcss": true,
+	"ignorePatterns": ["docs/**"]
+}

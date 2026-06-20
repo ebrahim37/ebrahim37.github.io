@@ -2,9 +2,11 @@
 	"type": "module",
 	"scripts": {
 		"dev": "vike dev",
-		"rename": "rm -rf docs && mv dist/client docs && rm -r dist",
-		"build": "vike build && bun run rename",
-		"push": "bun run build && git add -A && git commit -m \"update\" && git push"
+		"build": "vike build && rm -rf docs && mv dist/client docs && rm -r dist",
+		"push": "bun run build && git add -A && git commit -m \"update\" && git push",
+		"lint": "oxlint",
+		"format": "oxfmt",
+		"format:check": "oxfmt --check"
 	},
 	"dependencies": {
 		"solid-js": "^1.9.13",
@@ -22,6 +24,8 @@
 		"@tailwindcss/vite": "^4.3.1",
 		"tailwindcss": "^4.3.1",
 		"vike": "^0.4.259",
-		"vike-solid": "^0.8.2"
+		"vike-solid": "^0.8.2",
+		"oxlint": "^1.70.0",
+		"oxfmt": "^0.55.0"
 	}
 }
