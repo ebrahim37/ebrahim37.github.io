@@ -37,7 +37,7 @@ export function Page() {
 					<p class='leading-normal'>
 						UI-leaning full-stack dev focused on fast DX and clean UX.
 						Final-year CompSci @ Queen&apos;s.
-						I build with TypeScript, React/Solid, Tailwind, Drizzle, and Bun; ship on Linux.
+						I build with TypeScript, React/Solid, Tailwind, Drizzle, and Node.js; ship on Linux.
 						Recently: LLM eval/annotation and full-stack product work.
 					</p>
 					<div class='flex items-center gap-1 text-[0.875rem] text-[#475569] dark:text-[#cbd5e1]'>
