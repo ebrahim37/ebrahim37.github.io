@@ -56,8 +56,8 @@ export function Page() {
 									<div class='flex items-start justify-between gap-3'>
 										<div class='min-w-0 flex-1'>
 											<h3 class='card-title'>{position.title}</h3>
-											<p class='mt-1 text-xs text-[var(--gray)] tabular-nums'>{position.period}</p>
-											<p class='mt-2 text-sm text-[var(--gray)]'>{position.description}</p>
+											<p class='mt-1 text-xs text-(--gray) tabular-nums'>{position.period}</p>
+											<p class='mt-2 text-sm text-(--gray)'>{position.description}</p>
 										</div>
 										<ExternalLinkIcon />
 									</div>

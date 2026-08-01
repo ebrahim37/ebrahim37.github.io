@@ -9,10 +9,6 @@ export type Post = {
 	title: string,
 	subtitle: string,
 	timestamp: number,
-	image?: {
-		alt: string,
-		src: string,
-	},
 	words: number,
 	minutes: number,
 	content: string,
@@ -30,10 +26,6 @@ export const getPost = (slug: string): Post => {
 		title: data.title,
 		subtitle: data.subtitle,
 		timestamp: data.timestamp,
-		image: data.imageSrc ? {
-			alt: data.imageAlt,
-			src: data.imageSrc,
-		} : undefined,
 		words: readingStats.words,
 		minutes: Math.max(1, Math.round(readingStats.minutes)),
 		content,

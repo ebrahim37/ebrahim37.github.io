@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+	<channel>
+		<title>Ebrahim Haghshenas</title>
+		<link>https://ebra.dev</link>
+		<description>Posts by Ebrahim Haghshenas.</description>
+		<language>en</language>
+		<lastBuildDate>Sat, 01 Aug 2026 09:39:12 GMT</lastBuildDate>
+		<item>
+			<title>Fast, reproducible NixOS virtual machines on macOS and Windows</title>
+			<link>https://ebra.dev/posts/nixos-virtual-machines</link>
+			<guid>https://ebra.dev/posts/nixos-virtual-machines</guid>
+			<description>One NixOS configuration, tuned virtual machines, and a consistent Linux environment across host operating systems.</description>
+			<pubDate>Fri, 31 Jul 2026 00:00:00 GMT</pubDate>
+		</item>
+		<item>
+			<title>Declarative Fedora CoreOS servers with Podman Quadlets</title>
+			<link>https://ebra.dev/posts/selfhosting-with-fedora-coreos</link>
+			<guid>https://ebra.dev/posts/selfhosting-with-fedora-coreos</guid>
+			<description>Reproducible self-hosting without a container orchestrator or configuration drift.</description>
+			<pubDate>Thu, 30 Jul 2026 00:00:00 GMT</pubDate>
+		</item>
+	</channel>
+</rss>

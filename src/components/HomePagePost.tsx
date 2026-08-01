@@ -15,8 +15,8 @@ export const HomePagePost: Component<{ post: Post }> = props => {
 					<DocumentIcon />
 					<h2 class='card-title'>{props.post.title}</h2>
 				</div>
-				<p class='mb-2 text-sm text-[var(--gray)]'>{props.post.subtitle}</p>
-				<p class='mt-1 text-xs text-[var(--gray)] tabular-nums'>
+				<p class='mb-2 text-sm text-(--gray)'>{props.post.subtitle}</p>
+				<p class='mt-1 text-xs text-(--gray) tabular-nums'>
 					<time datetime={(new Date(props.post.timestamp)).toISOString()}>
 						<span class='date-relative'>{relativeDate()}</span>
 						<span class='date-absolute'>{formatDate(props.post.timestamp)}</span>

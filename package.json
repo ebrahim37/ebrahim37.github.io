@@ -2,24 +2,26 @@
 	"type": "module",
 	"scripts": {
 		"dev": "vike dev",
-		"build": "vike build && rm -rf docs && mv dist/client docs && rm -r dist",
+		"tc": "tsc --noEmit",
+		"build": "vike build && rm -rf docs && mv dist/client docs && rm -r dist && node src/utils/generate-rss.ts",
 		"push": "pnpm run build && git add -A && git commit -m \"update\" && git push"
 	},
 	"dependencies": {
-		"solid-js": "^1.9.13",
 		"clsx": "^2.1.1",
+		"solid-js": "^1.9.13",
 		"tailwind-merge": "^3.6.0"
 	},
 	"devDependencies": {
+		"@shikijs/markdown-exit": "^4.3.1",
+		"@tailwindcss/vite": "^4.3.1",
 		"@types/node": "^26.0.0",
 		"gray-matter": "^4.0.3",
-		"reading-time": "^1.5.0",
 		"markdown-exit": "^1.1.0-beta.2",
-		"@shikijs/markdown-exit": "^4.3.1",
-		"vite": "^8.0.16",
-		"@tailwindcss/vite": "^4.3.1",
+		"reading-time": "^1.5.0",
 		"tailwindcss": "^4.3.1",
+		"typescript": "^7.0.2",
 		"vike": "^0.4.259",
-		"vike-solid": "^0.8.2"
+		"vike-solid": "^0.8.2",
+		"vite": "^8.0.16"
 	}
 }

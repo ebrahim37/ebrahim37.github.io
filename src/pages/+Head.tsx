@@ -10,6 +10,7 @@ export function Head() {
 			<link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600;700&display=swap' />
 			<script>{`
 				try {
+					// startTheme is used in useTheme
 					var startTheme = 'light';
 					if (localStorage.getItem('theme')) {
 						startTheme = localStorage.getItem('theme');

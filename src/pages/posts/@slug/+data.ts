@@ -4,9 +4,8 @@ import Shiki from '@shikijs/markdown-exit';
 
 import { type Post, getPost } from '~/utils/posts.ts';
 
-// Allow figures and other purpose-built HTML in Markdown posts.
 const md = createMarkdownExit({
-	html: true,
+	html: true, // allow html in markdown
 });
 
 md.use(Shiki({

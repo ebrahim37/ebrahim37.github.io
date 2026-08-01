@@ -2,8 +2,7 @@ import type { ParentComponent } from 'solid-js';
 
 import { useTheme } from '~/utils/useTheme.ts';
 import { NavLink } from '~/components/NavLink.tsx';
-import { NavButton } from '~/components/NavButton.tsx';
-import { GitHubIcon, LinkedInIcon, MoonIcon, SunIcon } from '~/components/Icons.tsx';
+import { GitHubIcon, LinkedInIcon, MoonIcon, RssIcon, SunIcon } from '~/components/Icons.tsx';
 
 export const Layout: ParentComponent = props => {
 	const [theme, toggleTheme] = useTheme();
@@ -18,21 +17,43 @@ export const Layout: ParentComponent = props => {
 						<NavLink href='/about'>about</NavLink>
 					</nav>
 					<div class='flex items-center'>
-						<NavButton
+						<button
+							class='header-icon-button'
+							type='button'
 							onClick={toggleTheme}
-							icon={theme() === 'light' ? MoonIcon : SunIcon}
-							ariaLabel={`Switch to ${theme() === 'light' ? 'dark' : 'light'} theme`}
-						/>
-						<NavButton
+							aria-label={`Switch to ${theme() === 'light' ? 'dark' : 'light'} theme`}
+						>
+							{theme() === 'light'
+								? <MoonIcon class='size-[18px] contain-strict' />
+								: <SunIcon class='size-[18px] contain-strict' />}
+						</button>
+						<a
+							class='header-icon-button'
+							href='/rss.xml'
+							aria-label='RSS feed (opens in a new tab)'
+							target='_blank'
+							rel='noreferrer'
+						>
+							<RssIcon class='size-[18px] contain-strict' />
+						</a>
+						<a
+							class='header-icon-button'
 							href='https://github.com/ebrahim37'
-							icon={GitHubIcon}
-							ariaLabel='Ebrahim on GitHub (opens in a new tab)'
-						/>
-						<NavButton
+							aria-label='Ebrahim on GitHub (opens in a new tab)'
+							target='_blank'
+							rel='noreferrer'
+						>
+							<GitHubIcon class='size-[18px] contain-strict' />
+						</a>
+						<a
+							class='header-icon-button'
 							href='https://www.linkedin.com/in/ebrahim-hagh'
-							icon={LinkedInIcon}
-							ariaLabel='Ebrahim on LinkedIn (opens in a new tab)'
-						/>
+							aria-label='Ebrahim on LinkedIn (opens in a new tab)'
+							target='_blank'
+							rel='noreferrer'
+						>
+							<LinkedInIcon class='size-[18px] contain-strict' />
+						</a>
 					</div>
 				</div>
 			</header>
