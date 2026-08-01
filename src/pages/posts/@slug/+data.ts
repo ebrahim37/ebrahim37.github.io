@@ -1,6 +1,5 @@
 import type { PageContextServer } from 'vike/types';
 import { createMarkdownExit } from 'markdown-exit';
-import anchor from 'markdown-it-anchor';
 import Shiki from '@shikijs/markdown-exit';
 
 import { type Post, getPost } from '~/utils/posts.ts';
@@ -57,6 +56,7 @@ md.use(Shiki({
 							class: 'code-copy-button',
 							dataCopyCode: '',
 							ariaLabel: 'Copy code to clipboard',
+							ariaLive: 'polite',
 						},
 						children: [{ type: 'text', value: 'Copy' }],
 					},
@@ -66,17 +66,6 @@ md.use(Shiki({
 		},
 	}],
 }));
-
-md.use(anchor as any, {
-	level: [2, 3],
-	permalink: anchor.permalink.linkInsideHeader({
-		class: 'anchor',
-		symbol: '<span class="anchor-icon" aria-hidden="true"></span>',
-		placement: 'before',
-		space: false,
-		ariaHidden: true,
-	}),
-});
 
 export type Data = {
 	post: Post,

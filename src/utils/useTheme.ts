@@ -10,21 +10,23 @@ declare global {
 
 export const useTheme = (): [Accessor<ThemeType>, () => void] => {
 	const [theme, setTheme] = createSignal<ThemeType>('light');
+	const setBrowserTheme = (nextTheme: ThemeType) => {
+		document.documentElement.classList.toggle('dark', nextTheme === 'dark');
+		document.querySelector<HTMLMetaElement>('meta[name="theme-color"]')
+			?.setAttribute('content', nextTheme === 'dark' ? '#000000' : '#ffffff');
+	};
 
 	onMount(() => {
-		setTheme(window.startTheme ?? 'light');
+		const startTheme = window.startTheme ?? 'light';
+		setBrowserTheme(startTheme);
+		setTheme(startTheme);
 	});
 
 	const toggleTheme = () => {
-		if (theme() === 'dark') {
-			document.documentElement.classList.remove('dark');
-			localStorage.setItem('theme', 'light');
-			setTheme('light');
-		} else {
-			document.documentElement.classList.add('dark');
-			localStorage.setItem('theme', 'dark');
-			setTheme('dark');
-		}
+		const nextTheme = theme() === 'dark' ? 'light' : 'dark';
+		setBrowserTheme(nextTheme);
+		localStorage.setItem('theme', nextTheme);
+		setTheme(nextTheme);
 	};
 
 	return [theme, toggleTheme];

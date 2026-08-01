@@ -1,44 +1,33 @@
-import type { Component } from 'solid-js';
+import { type Component, createSignal, onMount } from 'solid-js';
 
 import type { Post } from '~/utils/posts.ts';
-import { createRelativeTime } from '~/utils/relativeTime.ts';
-import { TagLinks } from '~/components/TagLinks.tsx';
-import { CoverImage } from '~/components/CoverImage.tsx';
+import { formatDate, formatRelativeDate } from '~/utils/formatDate.ts';
+
+const DocumentIcon = () => (
+	<svg class='post-card-icon' fill='none' stroke='currentColor' viewBox='0 0 24 24' aria-hidden='true'>
+		<path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z' />
+	</svg>
+);
 
 export const HomePagePost: Component<{ post: Post }> = props => {
-	const relativeTime = createRelativeTime(props.post.timestamp);
+	const [relativeDate, setRelativeDate] = createSignal(formatDate(props.post.timestamp));
+	onMount(() => setRelativeDate(formatRelativeDate(props.post.timestamp)));
 
 	return (
-		<article class='flex flex-col gap-4 p-4 md:p-8'>
-			<div class='flex gap-2 text-[0.75rem] leading-snug font-light text-[#64748b] dark:text-[#94a3b8]'>
-				<time datetime={(new Date(props.post.timestamp)).toJSON()}>
-					{relativeTime()}
-				</time>
-				<span>—</span>
-				<TagLinks tags={props.post.tags} />
-			</div>
-			<a class='flex flex-col gap-4 text-inherit no-underline' href={`/posts/${props.post.slug}`}>
-				<div class='flex flex-col gap-2'>
-					<h3 class='text-[1.25rem] font-normal text-[#1e293b] dark:text-white'>
-						{props.post.title}
-					</h3>
-					<p>
-						{props.post.subtitle}
-					</p>
+		<li>
+			<a class='list-card post-card' href={`/posts/${props.post.slug}`}>
+				<div class='mb-1 flex items-center gap-2'>
+					<DocumentIcon />
+					<h2 class='card-title'>{props.post.title}</h2>
 				</div>
-				{props.post.image &&
-					<div class='relative h-74 w-full'>
-						<CoverImage
-							alt={props.post.image.alt}
-							src={props.post.image.src}
-							imgClass='min-h-full min-w-full max-h-full max-w-full rounded-2xl object-cover'
-						/>
-					</div>
-				}
-				<div class='font-normal'>
-					{props.post.words} words · {props.post.minutes} min read
-				</div>
+				<p class='mb-2 text-sm text-[var(--gray)]'>{props.post.subtitle}</p>
+				<p class='mt-1 text-xs text-[var(--gray)] tabular-nums'>
+					<time datetime={(new Date(props.post.timestamp)).toISOString()}>
+						<span class='date-relative'>{relativeDate()}</span>
+						<span class='date-absolute'>{formatDate(props.post.timestamp)}</span>
+					</time>
+				</p>
 			</a>
-		</article>
+		</li>
 	);
 };

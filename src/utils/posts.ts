@@ -4,17 +4,11 @@ import { readFileSync, readdirSync } from 'node:fs';
 import matter from 'gray-matter';
 import readingTime from 'reading-time';
 
-export type Tag = {
-	slug: string,
-	name: string
-};
-
 export type Post = {
 	slug: string,
 	title: string,
 	subtitle: string,
 	timestamp: number,
-	tags: Tag[],
 	image?: {
 		alt: string,
 		src: string,
@@ -36,13 +30,12 @@ export const getPost = (slug: string): Post => {
 		title: data.title,
 		subtitle: data.subtitle,
 		timestamp: data.timestamp,
-		tags: data.tags.map((x: string[]) => ({ slug: x[0], name: x[1] })),
 		image: data.imageSrc ? {
 			alt: data.imageAlt,
 			src: data.imageSrc,
 		} : undefined,
 		words: readingStats.words,
-		minutes: Math.round(readingStats.minutes),
+		minutes: Math.max(1, Math.round(readingStats.minutes)),
 		content,
 	};
 };
@@ -53,13 +46,4 @@ export const getPosts = (): Post[] => {
 		.map(file => file.slice(0, -3))
 		.map(getPost)
 		.sort((a, b) => b.timestamp - a.timestamp);
-};
-
-export const getTags = (): Tag[] => {
-	const tagsBySlug = new Map<string, Tag>();
-	for (const post of getPosts())
-		for (const tag of post.tags)
-			tagsBySlug.set(tag.slug, tag);
-
-	return [...tagsBySlug.values()].sort((a, b) => a.slug.localeCompare(b.slug));
 };
