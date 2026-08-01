@@ -4,17 +4,7 @@ import Shiki from '@shikijs/markdown-exit';
 
 import { type Post, getPost } from '~/utils/posts.ts';
 
-// enable html so we can insert pictures in the md like:
-// <figure>
-// 	<img
-// 		src="/images/nvim-thumbnail.avif"
-// 		alt='A screenshot of a Neovide window on macOS'
-// 	>
-// 	<figcaption>
-// 		Neovim 0.12
-// 		<a href="https://github.com/neovim/neovim/releases/tag/v0.12.0">See release</a>
-// 	</figcaption>
-// </figure>
+// Allow figures and other purpose-built HTML in Markdown posts.
 const md = createMarkdownExit({
 	html: true,
 });

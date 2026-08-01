@@ -1,0 +1,48 @@
+# ebra.dev
+
+Source code for my personal website and blog, available at [ebra.dev](https://ebra.dev).
+
+The site is built with [SolidJS](https://www.solidjs.com/), [Vike](https://vike.dev/), and [Tailwind CSS](https://tailwindcss.com/). Blog posts are written in Markdown and rendered at build time with syntax highlighting from Shiki. The result is a fully static site hosted on GitHub Pages.
+
+The visual design is inspired by [Max Leiter’s website](https://maxleiter.com/).
+
+## Development
+
+Install [Node.js](https://nodejs.org/) and [pnpm](https://pnpm.io/), then install the dependencies:
+
+```sh
+pnpm install
+```
+
+Start the development server:
+
+```sh
+pnpm dev
+```
+
+Create a production build:
+
+```sh
+pnpm build
+```
+
+The build command prerenders the site and writes the GitHub Pages output to `docs/`.
+
+## Project structure
+
+```text
+posts/       Markdown blog posts
+public/      Static files copied into the build
+src/         SolidJS components, pages, styles, and utilities
+docs/        Generated GitHub Pages site
+```
+
+Each post is a Markdown file in `posts/` with front matter for its title, subtitle, and timestamp:
+
+```md
+---
+title: Post title
+subtitle: A short description of the post.
+timestamp: 1785369600000
+---
+```

@@ -14,7 +14,7 @@ export function Page() {
 
 	return (
 		<>
-			<h1 class='page-heading'>posts/</h1>
+			<h1 class='page-heading post-list-heading'>posts/</h1>
 			<ul class='card-list'>
 				<For each={data.posts}>{post => <HomePagePost post={post} />}</For>
 			</ul>

@@ -1,11 +1,10 @@
 import type { Component } from 'solid-js';
+import { Dynamic } from 'solid-js/web';
 
-import { cn } from '~/utils/cn.ts';
-
-const iconClass = 'size-[18px] bg-current mask-cover mask-center mask-no-repeat contain-strict';
+import type { IconProps } from '~/components/Icons.tsx';
 
 export const NavButton: Component<{
-	cnArg: string,
+	icon: Component<IconProps>,
 	ariaLabel: string,
 } & ({
 	href: string,
@@ -14,7 +13,7 @@ export const NavButton: Component<{
 	href?: never,
 	onClick: () => void,
 })> = props => {
-	const icon = () => <span class={cn(iconClass, props.cnArg)} aria-hidden='true' />;
+	const icon = () => <Dynamic component={props.icon} class='size-[18px] contain-strict' />;
 
 	return props.href ? (
 		<a class='header-icon-button' href={props.href} aria-label={props.ariaLabel} target='_blank' rel='noreferrer'>

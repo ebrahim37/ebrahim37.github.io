@@ -3,13 +3,13 @@ import type { ParentComponent } from 'solid-js';
 import { useTheme } from '~/utils/useTheme.ts';
 import { NavLink } from '~/components/NavLink.tsx';
 import { NavButton } from '~/components/NavButton.tsx';
+import { GitHubIcon, LinkedInIcon, MoonIcon, SunIcon } from '~/components/Icons.tsx';
 
 export const Layout: ParentComponent = props => {
 	const [theme, toggleTheme] = useTheme();
 
 	return (
 		<>
-			<a class='skip-link' href='#main-content'>Skip to content</a>
 			<header class='site-header'>
 				<div class='site-header-inner'>
 					<nav aria-label='Primary navigation' class='flex items-center gap-1'>
@@ -20,23 +20,24 @@ export const Layout: ParentComponent = props => {
 					<div class='flex items-center'>
 						<NavButton
 							onClick={toggleTheme}
-							cnArg={theme() === 'light' ? 'mask-[url(/icons/moon.svg)]' : 'mask-[url(/icons/sun.svg)]'}
+							icon={theme() === 'light' ? MoonIcon : SunIcon}
 							ariaLabel={`Switch to ${theme() === 'light' ? 'dark' : 'light'} theme`}
 						/>
 						<NavButton
 							href='https://github.com/ebrahim37'
-							cnArg='mask-[url(/icons/github.svg)]'
+							icon={GitHubIcon}
 							ariaLabel='Ebrahim on GitHub (opens in a new tab)'
 						/>
 						<NavButton
 							href='https://www.linkedin.com/in/ebrahim-hagh'
-							cnArg='mask-[url(/icons/linkedin.svg)]'
+							icon={LinkedInIcon}
 							ariaLabel='Ebrahim on LinkedIn (opens in a new tab)'
 						/>
 					</div>
 				</div>
 			</header>
-			<main id='main-content' tabindex='-1'>
+			{/* enable card hover/active feedback on iOS Safari */}
+			<main on:touchstart={{ handleEvent: () => {}, passive: true }}>
 				{props.children}
 			</main>
 		</>
