@@ -21,6 +21,7 @@ export const HomePagePost: Component<{ post: Post }> = props => {
 						<span class='date-relative'>{relativeDate()}</span>
 						<span class='date-absolute'>{formatDate(props.post.timestamp)}</span>
 					</time>
+					<span class='post-reading-time'> · {props.post.minutes} min read</span>
 				</p>
 			</a>
 		</li>

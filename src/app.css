@@ -208,8 +208,12 @@ html.page-transitioning main {
 	display: none;
 }
 
-:is(.post-card:hover, .post-card:active, .post-card:focus-visible) .date-absolute {
+:is(.post-card:hover, .post-card:active, .post-card:focus-visible) :is(.date-absolute, .post-reading-time) {
 	display: inline;
+}
+
+.post-reading-time {
+	display: none;
 }
 
 .external-link-icon {
