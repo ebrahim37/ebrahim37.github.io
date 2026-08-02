@@ -3,40 +3,32 @@ import path from 'node:path';
 
 import { Feed } from 'feed';
 
-import { renderMarkdown } from './src/utils/markdown.ts';
 import { getPosts } from './src/utils/posts.ts';
+import { renderMarkdown } from './src/utils/markdown.ts';
 
-const siteUrl = 'https://ebra.dev';
-const feedUrl = `${siteUrl}/rss.xml`;
 const author = {
 	name: 'Ebrahim Haghshenas',
-	link: siteUrl,
+	link: 'https://ebra.dev',
 };
-const posts = getPosts();
 const feed = new Feed({
 	title: author.name,
+	id: author.link,
+	link: author.link,
 	description: `Posts by ${author.name}.`,
-	id: siteUrl,
-	link: siteUrl,
-	feed: feedUrl,
-	feedLinks: { rss: feedUrl },
 	language: 'en',
-	updated: posts[0] ? new Date(posts[0].timestamp) : new Date(),
 	author,
+	feedLinks: { rss: `${author.link}/rss.xml` },
 });
 
-for (const post of posts) {
-	const url = `${siteUrl}/posts/${post.slug}`;
-	const html = await renderMarkdown(post.content);
-
+for (const post of getPosts()) {
 	feed.addItem({
 		title: post.title,
-		id: url,
-		guid: url,
-		link: url,
-		description: html,
-		content: html,
+		link: `${author.link}/posts/${post.slug}`,
 		date: new Date(post.timestamp),
+		guid: post.slug,
+		description: post.subtitle,
+		content: await renderMarkdown(post.content),
+		author: [author],
 	});
 }
 

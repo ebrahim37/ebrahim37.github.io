@@ -23,6 +23,11 @@ export function Head() {
 					}
 				} catch (error) {}
 			`}</script>
+			<script
+				src='https://heartbeat.ebra.dev/api/script.js'
+				data-site-id='a6c00916053e'
+				defer
+			/>
 		</>
 	);
 }

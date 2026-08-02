@@ -4,7 +4,7 @@
         <title>Ebrahim Haghshenas</title>
         <link>https://ebra.dev/</link>
         <description>Posts by Ebrahim Haghshenas.</description>
-        <lastBuildDate>Fri, 31 Jul 2026 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 02 Aug 2026 09:18:40 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
@@ -12,26 +12,24 @@
         <item>
             <title><![CDATA[Fast, reproducible NixOS virtual machines on macOS and Windows]]></title>
             <link>https://ebra.dev/posts/nixos-virtual-machines</link>
-            <guid isPermaLink="false">https://ebra.dev/posts/nixos-virtual-machines</guid>
+            <guid isPermaLink="false">nixos-virtual-machines</guid>
             <pubDate>Fri, 31 Jul 2026 00:00:00 GMT</pubDate>
-            <description><![CDATA[<p>This post is being written.</p>
-<p>I’ll cover how I structure the NixOS configuration, share it across machines, and tune the virtualization layer for good filesystem, networking, and CPU performance on both macOS and Windows.</p>
-]]></description>
+            <description><![CDATA[One NixOS configuration, tuned virtual machines, and a consistent Linux environment across host operating systems.]]></description>
             <content:encoded><![CDATA[<p>This post is being written.</p>
 <p>I’ll cover how I structure the NixOS configuration, share it across machines, and tune the virtualization layer for good filesystem, networking, and CPU performance on both macOS and Windows.</p>
 ]]></content:encoded>
+            <author>Ebrahim Haghshenas</author>
         </item>
         <item>
             <title><![CDATA[Declarative Fedora CoreOS servers with Podman Quadlets]]></title>
             <link>https://ebra.dev/posts/selfhosting-with-fedora-coreos</link>
-            <guid isPermaLink="false">https://ebra.dev/posts/selfhosting-with-fedora-coreos</guid>
+            <guid isPermaLink="false">selfhosting-with-fedora-coreos</guid>
             <pubDate>Thu, 30 Jul 2026 00:00:00 GMT</pubDate>
-            <description><![CDATA[<p>This post is being written.</p>
-<p>I’ll cover the Fedora CoreOS provisioning flow, organizing Quadlet units, managing secrets and persistent data, and operating a collection of self-hosted services without giving up declarative configuration.</p>
-]]></description>
+            <description><![CDATA[Reproducible self-hosting without a container orchestrator or configuration drift.]]></description>
             <content:encoded><![CDATA[<p>This post is being written.</p>
 <p>I’ll cover the Fedora CoreOS provisioning flow, organizing Quadlet units, managing secrets and persistent data, and operating a collection of self-hosted services without giving up declarative configuration.</p>
 ]]></content:encoded>
+            <author>Ebrahim Haghshenas</author>
         </item>
     </channel>
 </rss>
