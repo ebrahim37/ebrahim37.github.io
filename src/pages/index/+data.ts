@@ -1,11 +1,11 @@
-import { type Post, getPosts } from '~/utils/posts.ts';
+import { type PostSummary, getPosts } from '~/utils/posts.ts';
 
 export type Data = {
-	posts: Post[],
+	posts: PostSummary[],
 };
 
 export function data(): Data {
 	return {
-		posts: getPosts(),
+		posts: getPosts().map(({ content: _, ...post }) => post),
 	};
 }

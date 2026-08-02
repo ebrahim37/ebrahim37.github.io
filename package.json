@@ -3,7 +3,7 @@
 	"scripts": {
 		"dev": "vike dev",
 		"tc": "tsc --noEmit",
-		"build": "vike build && rm -rf docs && mv dist/client docs && rm -r dist && node src/utils/generate-rss.ts",
+		"build": "vike build && rm -rf docs && mv dist/client docs && rm -r dist && node generate-rss.ts",
 		"push": "pnpm run build && git add -A && git commit -m \"update\" && git push"
 	},
 	"dependencies": {
@@ -15,6 +15,7 @@
 		"@shikijs/markdown-exit": "^4.3.1",
 		"@tailwindcss/vite": "^4.3.1",
 		"@types/node": "^26.0.0",
+		"feed": "^6.0.0",
 		"gray-matter": "^4.0.3",
 		"markdown-exit": "^1.1.0-beta.2",
 		"reading-time": "^1.5.0",

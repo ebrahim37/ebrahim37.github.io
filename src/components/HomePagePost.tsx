@@ -1,10 +1,10 @@
 import { type Component, createSignal, onMount } from 'solid-js';
 
-import type { Post } from '~/utils/posts.ts';
+import type { PostSummary } from '~/utils/posts.ts';
 import { formatDate, formatRelativeDate } from '~/utils/formatDate.ts';
 import { DocumentIcon } from '~/components/Icons.tsx';
 
-export const HomePagePost: Component<{ post: Post }> = props => {
+export const HomePagePost: Component<{ post: PostSummary }> = props => {
 	const [relativeDate, setRelativeDate] = createSignal(formatDate(props.post.timestamp));
 	onMount(() => setRelativeDate(formatRelativeDate(props.post.timestamp)));
 

@@ -14,6 +14,8 @@ export type Post = {
 	content: string,
 };
 
+export type PostSummary = Omit<Post, 'content'>;
+
 const postsDir = path.join(process.cwd(), 'posts');
 
 export const getPost = (slug: string): Post => {
