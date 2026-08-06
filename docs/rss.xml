@@ -4,30 +4,75 @@
         <title>Ebrahim Haghshenas</title>
         <link>https://ebra.dev/</link>
         <description>Posts by Ebrahim Haghshenas.</description>
-        <lastBuildDate>Sun, 02 Aug 2026 09:18:40 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 06 Aug 2026 23:56:06 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
         <atom:link href="https://ebra.dev/rss.xml" rel="self" type="application/rss+xml"/>
         <item>
-            <title><![CDATA[Fast, reproducible NixOS virtual machines on macOS and Windows]]></title>
-            <link>https://ebra.dev/posts/nixos-virtual-machines</link>
-            <guid isPermaLink="false">nixos-virtual-machines</guid>
+            <title><![CDATA[Markdown Demo]]></title>
+            <link>https://ebra.dev/posts/markdown-demo</link>
+            <guid isPermaLink="false">markdown-demo</guid>
             <pubDate>Fri, 31 Jul 2026 00:00:00 GMT</pubDate>
-            <description><![CDATA[One NixOS configuration, tuned virtual machines, and a consistent Linux environment across host operating systems.]]></description>
-            <content:encoded><![CDATA[<p>This post is being written.</p>
-<p>I’ll cover how I structure the NixOS configuration, share it across machines, and tune the virtualization layer for good filesystem, networking, and CPU performance on both macOS and Windows.</p>
-]]></content:encoded>
-            <author>Ebrahim Haghshenas</author>
-        </item>
-        <item>
-            <title><![CDATA[Declarative Fedora CoreOS servers with Podman Quadlets]]></title>
-            <link>https://ebra.dev/posts/selfhosting-with-fedora-coreos</link>
-            <guid isPermaLink="false">selfhosting-with-fedora-coreos</guid>
-            <pubDate>Thu, 30 Jul 2026 00:00:00 GMT</pubDate>
-            <description><![CDATA[Reproducible self-hosting without a container orchestrator or configuration drift.]]></description>
-            <content:encoded><![CDATA[<p>This post is being written.</p>
-<p>I’ll cover the Fedora CoreOS provisioning flow, organizing Quadlet units, managing secrets and persistent data, and operating a collection of self-hosted services without giving up declarative configuration.</p>
+            <description><![CDATA[A demo of all the markdown elements that can be used and how they look.]]></description>
+            <content:encoded><![CDATA[<p>When starting a new TypeScript project, it helps to begin with the smallest possible program:</p>
+<pre><code class="language-ts"><figure class="code-block" style="background-color:light-dark(#ffffff, #121212);--shiki-light-bg:#ffffff;--shiki-dark-bg:#121212;color:light-dark(#393a34, #dbd7caee);--shiki-light:#393a34;--shiki-dark:#dbd7caee"><figcaption class="code-block-title"><span>files/hello.ts</span><span class="code-copy-button" data-copy-code="" aria-live="polite">Copy</span></figcaption><pre class="shiki shiki-themes vitesse-light vitesse-dark" style="background-color:light-dark(#ffffff, #121212);--shiki-light-bg:#ffffff;--shiki-dark-bg:#121212;color:light-dark(#393a34, #dbd7caee);--shiki-light:#393a34;--shiki-dark:#dbd7caee" tabindex="0" title="files/hello.ts"><code class="language-ts"><span class="line"><span style="color:light-dark(#AB5959, #CB7676);--shiki-light:#AB5959;--shiki-dark:#CB7676">const </span><span style="color:light-dark(#B07D48, #BD976A);--shiki-light:#B07D48;--shiki-dark:#BD976A">a</span><span style="color:light-dark(#999999, #666666);--shiki-light:#999999;--shiki-dark:#666666"> =</span><span style="color:light-dark(#2F798A, #4C9A91);--shiki-light:#2F798A;--shiki-dark:#4C9A91"> 1</span><span style="color:light-dark(#999999, #666666);--shiki-light:#999999;--shiki-dark:#666666">;</span><span style="color:light-dark(#A0ADA0, #758575DD);--shiki-light:#A0ADA0;--shiki-dark:#758575DD"> // this code block has a file name</span></span></code></pre></figure></code></pre>
+<pre><code class="language-ts"><figure class="code-block" style="background-color:light-dark(#ffffff, #121212);--shiki-light-bg:#ffffff;--shiki-dark-bg:#121212;color:light-dark(#393a34, #dbd7caee);--shiki-light:#393a34;--shiki-dark:#dbd7caee"><pre class="shiki shiki-themes vitesse-light vitesse-dark" style="background-color:light-dark(#ffffff, #121212);--shiki-light-bg:#ffffff;--shiki-dark-bg:#121212;color:light-dark(#393a34, #dbd7caee);--shiki-light:#393a34;--shiki-dark:#dbd7caee" tabindex="0"><code class="language-ts"><span class="code-copy-button" data-copy-code="" aria-live="polite">Copy</span><span class="line"><span style="color:light-dark(#AB5959, #CB7676);--shiki-light:#AB5959;--shiki-dark:#CB7676">const </span><span style="color:light-dark(#B07D48, #BD976A);--shiki-light:#B07D48;--shiki-dark:#BD976A">b</span><span style="color:light-dark(#999999, #666666);--shiki-light:#999999;--shiki-dark:#666666"> =</span><span style="color:light-dark(#2F798A, #4C9A91);--shiki-light:#2F798A;--shiki-dark:#4C9A91"> 2</span><span style="color:light-dark(#999999, #666666);--shiki-light:#999999;--shiki-dark:#666666">;</span><span style="color:light-dark(#A0ADA0, #758575DD);--shiki-light:#A0ADA0;--shiki-dark:#758575DD"> // this code block has a very long line which overflows and makes a scrollbar appear</span></span>
+<span class="line"><span style="color:light-dark(#AB5959, #CB7676);--shiki-light:#AB5959;--shiki-dark:#CB7676">const </span><span style="color:light-dark(#B07D48, #BD976A);--shiki-light:#B07D48;--shiki-dark:#BD976A">b</span><span style="color:light-dark(#999999, #666666);--shiki-light:#999999;--shiki-dark:#666666"> =</span><span style="color:light-dark(#2F798A, #4C9A91);--shiki-light:#2F798A;--shiki-dark:#4C9A91"> 2</span><span style="color:light-dark(#999999, #666666);--shiki-light:#999999;--shiki-dark:#666666">;</span><span style="color:light-dark(#A0ADA0, #758575DD);--shiki-light:#A0ADA0;--shiki-dark:#758575DD"> // this code block has a very long line which overflows and makes a scrollbar appear</span></span></code></pre></figure></code></pre>
+<blockquote>
+<p>A small working example is often more useful than a large unfinished one.</p>
+</blockquote>
+<h2>Setting Up the Project</h2>
+<p>First, create a new directory and initialize your project. Keep the initial setup simple so that you can understand each dependency you add.</p>
+<h3>Why Use TypeScript?</h3>
+<p>TypeScript adds static type checking to JavaScript. This can make your code <strong>safer and easier to maintain</strong>, especially as a project grows.</p>
+<p>It is also <em>useful for catching mistakes</em> before your program runs.</p>
+<p>Normal JavaScript is still valid in most TypeScript files.</p>
+<blockquote>
+<p>TypeScript does not replace JavaScript. It builds on top of it.</p>
+</blockquote>
+<h2>Installation Steps</h2>
+<p>Follow these steps to create the project:</p>
+<ol>
+<li>Create a new project directory.</li>
+<li>Initialize a package manager.</li>
+<li>Install TypeScript.</li>
+</ol>
+<p>You may also want to add:</p>
+<ul>
+<li>A formatter</li>
+<li>A linter</li>
+<li>A test runner</li>
+<li><code>npm install --save-dev typescript</code></li>
+</ul>
+<p>For more information, read the <a href="https://www.example.com" target="_blank" rel="noopener noreferrer">TypeScript documentation</a>.</p>
+<h2>Project Files</h2>
+<table>
+<thead>
+<tr>
+<th>Syntax</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Header</td>
+<td>Title</td>
+</tr>
+<tr>
+<td>Paragraph</td>
+<td>Text</td>
+</tr>
+</tbody>
+</table>
+<p>At one time, you might have believed that <s>TypeScript requires a complicated setup</s>. For a basic project, only a few files are necessary.</p>
+<p><img src="https://placehold.co/400" alt="A placeholder image"></p>
+<figcaption>
+    Placeholder caption.
+    <a href="https://placehold.co" target="_blank" rel="noreferrer">
+        source
+    </a>
+</figcaption>
 ]]></content:encoded>
             <author>Ebrahim Haghshenas</author>
         </item>

@@ -11,13 +11,16 @@ export function Page() {
 		description: data.post.subtitle,
 	});
 	const handleCodeCopy = async (event: MouseEvent) => {
-		const button = (event.target as Element).closest<HTMLButtonElement>('[data-copy-code]');
+		const button = (event.target as Element).closest<HTMLElement>('[data-copy-code]');
 		if (!button)
 			return;
 
-		const code = button.closest('.code-block')?.querySelector('code')?.textContent;
-		if (code == null)
+		const codeElement = button.closest('.code-block')?.querySelector('code');
+		if (!codeElement)
 			return;
+		const copy = codeElement.cloneNode(true) as HTMLElement;
+		copy.querySelector('[data-copy-code]')?.remove();
+		const code = copy.textContent ?? '';
 
 		try {
 			await navigator.clipboard.writeText(code);
@@ -32,7 +35,6 @@ export function Page() {
 			}, 1800);
 		}
 	};
-
 	return (
 		<article>
 			<header>

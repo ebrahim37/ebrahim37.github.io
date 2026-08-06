@@ -14,7 +14,11 @@ md.renderer.rules.link_open = (tokens, index, options, env, renderer) => {
 };
 
 md.use(Shiki({
-	theme: 'vitesse-dark',
+	themes: {
+		light: 'vitesse-light',
+		dark: 'vitesse-dark',
+	},
+	defaultColor: 'light-dark()',
 	// pass title="..." from a code block to the transformer
 	parseMetaString(meta) {
 		const match = meta.match(/\btitle=(?:"([^"]*)"|'([^']*)')/);
@@ -27,6 +31,22 @@ md.use(Shiki({
 				return;
 
 			const title = this.options.meta?.title;
+			const copyButton = {
+				type: 'element' as const,
+				tagName: 'span',
+				properties: {
+					class: 'code-copy-button',
+					dataCopyCode: '',
+					ariaLive: 'polite',
+				},
+				children: [{ type: 'text' as const, value: 'Copy' }],
+			};
+			if (!title) {
+				const code = pre.children.find(child => child.type === 'element' && child.tagName === 'code');
+
+				if (code?.type === 'element')
+					code.children.unshift(copyButton);
+			}
 
 			node.children = [{
 				type: 'element',
@@ -40,20 +60,11 @@ md.use(Shiki({
 						type: 'element' as const,
 						tagName: 'figcaption',
 						properties: { class: 'code-block-title' },
-						children: [{ type: 'text' as const, value: title }],
+						children: [
+							{ type: 'element' as const, tagName: 'span', properties: {}, children: [{ type: 'text' as const, value: title }] },
+							copyButton,
+						],
 					}] : []),
-					{
-						type: 'element',
-						tagName: 'button',
-						properties: {
-							type: 'button',
-							class: 'code-copy-button',
-							dataCopyCode: '',
-							ariaLabel: 'Copy code to clipboard',
-							ariaLive: 'polite',
-						},
-						children: [{ type: 'text', value: 'Copy' }],
-					},
 					pre,
 				],
 			}];

@@ -5,6 +5,7 @@
 :root {
 	--font-sans: "Geist", -apple-system, BlinkMacSystemFont, "Roboto", "Helvetica Neue", sans-serif;
 	--font-mono: "Geist Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+	--transition: 0.1s ease-in-out;
 	--bg: #ffffff;
 	--fg: #444444;
 	--gray: #646464;
@@ -14,8 +15,12 @@
 	--article-color: #212121;
 	--link: #6669ff;
 	--border-color: rgba(0, 0, 0, 0.1);
+	--code-border-color: rgba(127, 127, 127, 0.45);
+	--code-bg: #f4f4f5;
+	--code-button-color: #3f3f46;
+	--code-button-hover-bg: #e4e4e7;
+	--code-button-hover-color: #18181b;
 	--selection: rgba(0, 0, 0, 0.99);
-	--transition: 0.1s ease-in-out;
 	color-scheme: light;
 }
 
@@ -29,6 +34,11 @@ html.dark {
 	--article-color: #eaeaea;
 	--link: #579dff;
 	--border-color: rgba(255, 255, 255, 0.1);
+	--code-border-color: var(--border-color);
+	--code-bg: #121212;
+	--code-button-color: #d5d5d5;
+	--code-button-hover-bg: rgba(255, 255, 255, 0.1);
+	--code-button-hover-color: #ffffff;
 	--selection: rgba(255, 255, 255, 0.88);
 	color-scheme: dark;
 }
@@ -314,13 +324,16 @@ html.page-transitioning main {
 		margin-top: 1em;
 	}
 
+	& > :is(h2, h3, h4, h5, h6) {
+		margin-top: 16px;
+	}
+
 	& p {
 		margin-top: 1em;
 		color: var(--fg);
 	}
 
 	& :is(h2, h3, h4, h5, h6) {
-		padding: 16px 0 8px;
 		font-family: var(--font-mono);
 		font-weight: 600;
 		scroll-margin-top: 16px;
@@ -379,11 +392,7 @@ html.page-transitioning main {
 		}
 	}
 
-	& figure:has(> img) {
-		margin-block: 16px;
-	}
-
-	& :is(figure > img, img, video) {
+	& :is(img, video) {
 		display: block;
 		height: auto;
 		max-width: 100%;
@@ -398,19 +407,43 @@ html.page-transitioning main {
 		text-align: center;
 	}
 
+	& > figcaption {
+		margin-top: 0.25em;
+	}
+
+	& table {
+		width: 100%;
+		margin-block: 16px;
+		border-collapse: collapse;
+		font-size: 14px;
+	}
+
+	& :is(th, td) {
+		border-bottom: 1px solid var(--border-color);
+		padding: 10px 16px;
+		text-align: left;
+		vertical-align: top;
+	}
+
+	& th {
+		color: var(--article-color);
+		font-weight: 600;
+	}
+
+	& :is(th, td):first-child {
+		padding-left: 0;
+	}
+
+	& :is(th, td):last-child {
+		padding-right: 0;
+	}
+
 	& :not(pre) > code {
 		border-radius: 5px;
 		background: var(--lightest-gray);
 		padding: 2px 4px;
 		font-family: var(--font-mono);
 		font-size: 14px;
-
-		&::before,
-		&::after {
-			color: var(--gray);
-			content: "`";
-			user-select: none;
-		}
 	}
 }
 
@@ -419,45 +452,54 @@ html.page-transitioning main {
 	width: 100%;
 	margin-block: 16px;
 	overflow: hidden;
-	border: 1px solid var(--border-color);
+	border: 1px solid var(--code-border-color);
 	border-radius: 5px;
-	background: var(--lightest-gray);
+	background-color: var(--code-bg) !important;
 }
 
-.code-block-title {
-	display: block;
-	border-bottom: 1px solid var(--border-color);
-	padding: 8px 72px 8px 16px;
+.code-block .code-block-title {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+	border-bottom: 1px solid var(--code-border-color);
+	padding: 8px 12px;
 	font-family: var(--font-mono);
 	font-size: 12px;
 	line-height: 24px;
+	text-align: left;
+}
+
+.code-block-title .code-copy-button {
+	flex-shrink: 0;
 }
 
 .code-copy-button {
-	position: absolute;
-	top: 7px;
-	right: 7px;
-	z-index: 1;
+	display: inline-flex;
+	height: 24px;
 	min-width: 52px;
-	min-height: 30px;
 	cursor: pointer;
-	border: 1px solid rgba(255, 255, 255, 0.15);
-	border-radius: 5px;
-	background: #242424;
+	align-items: center;
+	justify-content: center;
+	border: 0;
+	border-radius: 8px;
+	background: transparent;
 	padding-inline: 8px;
-	color: #d5d5d5;
+	color: var(--code-button-color);
 	font-size: 12px;
+	transition: background-color var(--transition), color var(--transition);
 }
 
-.code-copy-button:hover {
-	background: #303030;
-	color: white;
+.code-copy-button:is(:hover, :active) {
+	background: var(--code-button-hover-bg);
+	color: var(--code-button-hover-color);
 }
 
 pre.shiki {
 	width: 100%;
+	min-width: 0;
 	overflow-x: auto;
-	padding: 16px;
+	background-color: var(--code-bg) !important;
 	font-family: var(--font-mono);
 	font-size: 14px;
 	line-height: 1.8;
@@ -465,10 +507,19 @@ pre.shiki {
 	tab-size: 2;
 }
 
+pre.shiki > code > .code-copy-button {
+	position: sticky;
+	right: 12px;
+	float: right;
+	margin-left: 12px;
+}
+
 pre.shiki > code {
 	display: block;
+	width: max-content;
+	min-width: 100%;
 	background: transparent;
-	padding: 0;
+	padding: 12px;
 	color: inherit;
 	font: inherit;
 }
