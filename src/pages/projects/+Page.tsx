@@ -94,7 +94,7 @@ const PROJECTS: Project[] = [
 export function Page() {
 	useConfig()({
 		title: 'Projects | Ebrahim Haghshenas',
-		description: 'Selected projects by Ebrahim Haghshenas.',
+		description: 'Personal projects of Ebrahim Haghshenas.',
 	});
 
 	return (

@@ -29,7 +29,7 @@ const EXPERIENCE = [
 export function Page() {
 	useConfig()({
 		title: 'About | Ebrahim Haghshenas',
-		description: 'About Ebrahim Haghshenas, his experience, and this website.',
+		description: 'About Ebrahim Haghshenas.',
 	});
 
 	return (

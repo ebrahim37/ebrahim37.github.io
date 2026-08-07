@@ -8,7 +8,7 @@ import { HomePagePost } from '~/components/HomePagePost.tsx';
 export function Page() {
 	useConfig()({
 		title: 'Blog | Ebrahim Haghshenas',
-		description: 'Writing by Ebrahim Haghshenas about Linux infrastructure, self-hosting, and software.',
+		description: 'Posts by Ebrahim Haghshenas.',
 	});
 	const data = useData<Data>();
 

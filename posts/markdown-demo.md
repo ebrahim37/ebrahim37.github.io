@@ -1,7 +1,7 @@
 ---
 title: Markdown Demo
 subtitle: A demo of all the markdown elements that can be used and how they look.
-timestamp: 1785456000000
+timestamp: 1786060739000
 ---
 When starting a new TypeScript project, it helps to begin with the smallest possible program:
 
