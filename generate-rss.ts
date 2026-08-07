@@ -8,6 +8,7 @@ import { renderMarkdown } from './src/utils/markdown.ts';
 
 const author = {
 	name: 'Ebrahim Haghshenas',
+	email: 'sayhi@ebra.dev',
 	link: 'https://ebra.dev',
 };
 const feed = new Feed({
