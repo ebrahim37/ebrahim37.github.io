@@ -52,7 +52,7 @@ export function Page() {
 					<ul class='card-list experience-list'>
 						<For each={EXPERIENCE}>{position =>
 							<li>
-								<a class='list-card experience-card' href={position.href} target='_blank' rel='noreferrer'>
+								<a class='list-card' href={position.href} target='_blank' rel='noreferrer'>
 									<div class='flex items-start justify-between gap-3'>
 										<div class='min-w-0 flex-1'>
 											<h3 class='card-title'>{position.title}</h3>

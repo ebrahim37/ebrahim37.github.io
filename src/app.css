@@ -1,7 +1,5 @@
 @import "tailwindcss" source("./");
 
-@custom-variant dark (&:where(.dark, .dark *));
-
 :root {
 	--font-sans: "Geist", -apple-system, BlinkMacSystemFont, "Roboto", "Helvetica Neue", sans-serif;
 	--font-mono: "Geist Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
@@ -45,13 +43,13 @@ html.dark {
 
 html,
 body {
-	min-height: 100%;
 	background: var(--bg);
 	color: var(--fg);
 	overscroll-behavior-y: none;
 }
 
 html {
+	min-height: 100%;
 	scrollbar-gutter: stable;
 	-webkit-tap-highlight-color: color-mix(in srgb, var(--fg) 12%, transparent);
 }
@@ -64,10 +62,6 @@ body {
 	text-rendering: optimizeLegibility;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-}
-
-a {
-	color: inherit;
 }
 
 ::selection {
@@ -86,7 +80,6 @@ a {
 }
 
 :is(.site-header-inner, main) {
-	width: 100%;
 	max-width: 768px;
 	margin-inline: auto;
 }
@@ -96,8 +89,7 @@ a {
 	height: 40px;
 	align-items: center;
 	justify-content: space-between;
-	padding-left: max(16px, env(safe-area-inset-left));
-	padding-right: max(16px, env(safe-area-inset-right));
+	padding-inline: max(16px, env(safe-area-inset-left)) max(16px, env(safe-area-inset-right));
 }
 
 .header-link {
@@ -110,11 +102,10 @@ a {
 	font-size: 14px;
 	font-weight: 500;
 	line-height: 18px;
-	text-decoration: none;
 	text-underline-offset: 4px;
 }
 
-:is(.header-link:hover, .header-link-active) {
+.header-link:is(:hover, .header-link-active) {
 	text-decoration: underline;
 }
 
@@ -127,9 +118,6 @@ a {
 	cursor: pointer;
 	align-items: center;
 	justify-content: center;
-	border: 0;
-	background: transparent;
-	padding: 0;
 	color: var(--gray);
 	transition: color var(--transition);
 }
@@ -141,7 +129,7 @@ a {
 	content: "";
 }
 
-:is(.header-icon-button:hover, .header-icon-button:active) {
+.header-icon-button:is(:hover, :active) {
 	color: var(--fg);
 }
 
@@ -157,10 +145,7 @@ html.page-transitioning main {
 }
 
 .page-heading {
-	height: 36px;
 	margin-bottom: 32px;
-	color: var(--fg);
-	font-family: var(--font-mono);
 	font-size: 30px;
 	font-weight: 700;
 	line-height: 36px;
@@ -170,7 +155,11 @@ html.page-transitioning main {
 	color: var(--article-color);
 }
 
-:is(.card-list, .project-list) {
+:is(.page-heading, .card-title, .content-heading, .post-meta, .post-title, .post-subtitle) {
+	font-family: var(--font-mono);
+}
+
+.card-list {
 	display: flex;
 	margin-bottom: 40px;
 	flex-direction: column;
@@ -182,25 +171,27 @@ html.page-transitioning main {
 	border: 1px solid var(--border-color);
 	border-radius: 4px;
 	padding: 12px;
-	text-decoration: none;
-	transition: background-color var(--transition), color var(--transition);
+	transition: background-color var(--transition);
 }
 
-:is(.list-card:hover, .list-card:active, .list-card:focus-visible) {
+.list-card:is(:hover, :active, :focus-visible) {
 	background: var(--lighter-gray);
+
+	& .card-title {
+		color: var(--gray);
+	}
+
+	& .post-card-icon {
+		color: var(--fg);
+	}
 }
 
 .card-title {
 	color: var(--fg);
-	font-family: var(--font-mono);
 	font-size: 14px;
 	font-weight: 600;
 	line-height: 1.4;
 	transition: color var(--transition);
-}
-
-:is(.list-card:hover, .list-card:active, .list-card:focus-visible) .card-title {
-	color: var(--gray);
 }
 
 .post-card-icon {
@@ -211,20 +202,18 @@ html.page-transitioning main {
 	transition: color var(--transition);
 }
 
-:is(.list-card:hover, .list-card:active, .list-card:focus-visible) .post-card-icon {
-	color: var(--fg);
-}
-
-:is(.date-absolute, :is(.post-card:hover, .post-card:active, .post-card:focus-visible) .date-relative) {
+:is(.date-absolute, .post-reading-time) {
 	display: none;
 }
 
-:is(.post-card:hover, .post-card:active, .post-card:focus-visible) :is(.date-absolute, .post-reading-time) {
-	display: inline;
-}
+.post-card:is(:hover, :active, :focus-visible) {
+	& .date-relative {
+		display: none;
+	}
 
-.post-reading-time {
-	display: none;
+	& :is(.date-absolute, .post-reading-time) {
+		display: inline;
+	}
 }
 
 .external-link-icon {
@@ -236,6 +225,7 @@ html.page-transitioning main {
 
 .project-tags {
 	display: flex;
+	margin-top: auto;
 	flex-wrap: wrap;
 	gap: 6px;
 }
@@ -266,7 +256,6 @@ html.page-transitioning main {
 .content-heading {
 	margin-bottom: 12px;
 	color: var(--fg);
-	font-family: var(--font-mono);
 	font-size: 20px;
 	font-weight: 700;
 	line-height: 28px;
@@ -279,7 +268,7 @@ html.page-transitioning main {
 	transition: opacity var(--transition);
 }
 
-:is(.text-link:hover, .text-link:active) {
+.text-link:is(:hover, :active) {
 	opacity: 0.8;
 }
 
@@ -290,7 +279,6 @@ html.page-transitioning main {
 	justify-content: space-between;
 	gap: 16px;
 	color: var(--gray);
-	font-family: var(--font-mono);
 	font-size: 14px;
 	line-height: 20px;
 }
@@ -299,7 +287,6 @@ html.page-transitioning main {
 	margin: 8px 0;
 	padding: 16px 0 8px;
 	color: var(--article-color);
-	font-family: var(--font-mono);
 	font-size: 30px;
 	font-weight: 700;
 	line-height: 40px;
@@ -309,13 +296,11 @@ html.page-transitioning main {
 .post-subtitle {
 	margin-bottom: 16px;
 	color: var(--article-color);
-	font-family: var(--font-mono);
 	font-size: 16px;
 	line-height: 24px;
 }
 
 .markdown-article {
-	margin-inline: auto;
 	color: var(--article-color);
 	line-height: 1.7;
 	overflow-wrap: anywhere;
@@ -393,9 +378,6 @@ html.page-transitioning main {
 	}
 
 	& :is(img, video) {
-		display: block;
-		height: auto;
-		max-width: 100%;
 		margin: 16px auto;
 		border: 1px solid var(--border-color);
 		border-radius: 8px;
@@ -414,7 +396,6 @@ html.page-transitioning main {
 	& table {
 		width: 100%;
 		margin-block: 16px;
-		border-collapse: collapse;
 		font-size: 14px;
 	}
 
@@ -426,7 +407,6 @@ html.page-transitioning main {
 	}
 
 	& th {
-		color: var(--article-color);
 		font-weight: 600;
 	}
 
@@ -448,8 +428,6 @@ html.page-transitioning main {
 }
 
 .code-block {
-	position: relative;
-	width: 100%;
 	margin-block: 16px;
 	overflow: hidden;
 	border: 1px solid var(--code-border-color);
@@ -457,7 +435,7 @@ html.page-transitioning main {
 	background-color: var(--code-bg) !important;
 }
 
-.code-block .code-block-title {
+.code-block-title {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
@@ -470,20 +448,15 @@ html.page-transitioning main {
 	text-align: left;
 }
 
-.code-block-title .code-copy-button {
-	flex-shrink: 0;
-}
-
 .code-copy-button {
 	display: inline-flex;
 	height: 24px;
 	min-width: 52px;
+	flex-shrink: 0;
 	cursor: pointer;
 	align-items: center;
 	justify-content: center;
-	border: 0;
 	border-radius: 8px;
-	background: transparent;
 	padding-inline: 8px;
 	color: var(--code-button-color);
 	font-size: 12px;
@@ -497,7 +470,6 @@ html.page-transitioning main {
 
 pre.shiki {
 	width: 100%;
-	min-width: 0;
 	overflow-x: auto;
 	background-color: var(--code-bg) !important;
 	font-family: var(--font-mono);
@@ -518,9 +490,7 @@ pre.shiki > code {
 	display: block;
 	width: max-content;
 	min-width: 100%;
-	background: transparent;
 	padding: 12px;
-	color: inherit;
 	font: inherit;
 }
 

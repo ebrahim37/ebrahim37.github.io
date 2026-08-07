@@ -100,7 +100,7 @@ export function Page() {
 	return (
 		<>
 			<h1 class='page-heading'>projects/</h1>
-			<ul class='project-list'>
+			<ul class='card-list project-list'>
 				<For each={PROJECTS}>{project =>
 					<li>
 						<a
@@ -113,7 +113,7 @@ export function Page() {
 								<div class='flex min-w-0 flex-1 flex-col'>
 									<h2 class='card-title'>{project.name}</h2>
 									<p class='mb-2 mt-1 text-sm text-(--gray)'>{project.description}</p>
-									<div class='project-tags mt-auto'>
+									<div class='project-tags'>
 										<For each={project.technologies}>{technology => <span class='project-tag' translate='no'>{technology}</span>}</For>
 									</div>
 								</div>

@@ -48,7 +48,7 @@ export function Page() {
 				<p class='post-subtitle'>{data.post.subtitle}</p>
 			</header>
 			<div
-				class='markdown-article w-full text-left'
+				class='markdown-article'
 				onClick={handleCodeCopy}
 				innerHTML={data.html}
 			/>
