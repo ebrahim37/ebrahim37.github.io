@@ -10,8 +10,13 @@ const a = 1; // this code block has a file name
 ```
 
 ```ts
-const b = 2; // this code block has a very long line which overflows and makes a scrollbar appear
-const b = 2; // this code block has a very long line which overflows and makes a scrollbar appear
+const b = 2;
+const c = 3; // this code block has a very long line which overflows and makes a scrollbar appear
+```
+
+```ts
+const b = 2; // this code block's first line overflows, shift the copy button so we can read it fully
+const c = 3;
 ```
 
 > A small working example is often more useful than a large unfinished one.
